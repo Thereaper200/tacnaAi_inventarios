@@ -1,0 +1,332 @@
+*{
+    margin:     0; /*margen 0 para todos los objetos*/
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+/*Barra de navegación*/
+
+.container-navbar{
+    background-color: rgb(0, 0, 0); /*Color negro para la barra de navegacion*/
+    display: flex; /* Muestra los links en fila */
+    justify-content: center; /*Deja todos los links en centro del bloque*/
+}
+
+.navbar_logo{
+    height: 55px; /* Altura del logo */
+    margin: 0px 20px; /* Margen del logo */
+}
+
+.navbar_logo:hover{
+    transform: scale(1.3); /* Agranda el logo cuando el cursor se para sobre el */
+}
+
+.ajuste_nav{
+    display: flex; /* Enlista los links y los distribuye dentro de el bloque */
+    align-items: center; /* Centra los links a su bloque*/
+}
+
+.nav_list{
+    display: flex; /* Enlista todos los objetos dentro del bloque */
+}
+
+.nav_link{
+    margin-left: 55px; /* Centra los links a este bloque*/
+    list-style: none; /* Elimina el punto que se les genera a las listas desordenadas*/
+}   
+
+.nav_link:hover {
+    transform: scale(1.2); /* Agranda el texto de los links */
+}
+
+.nav_link a{
+    color:rgb(200, 188, 188); /* Color de la barra inferior que aparece cuando el cursor se encuentra encima*/
+    text-decoration: none; /* Elimina el estilo (barra inferior) de los links */
+}
+
+.nav_link a::after{
+    content: "";  /* Genera contenido que se adjunta antes y despues de poner el cursor */
+    position: absolute; 
+    width: 100%; /* Tamaño de las lineas que se crean al superponer el cursor */
+    height: 1px; 
+    bottom: 0; /* Posicion vertical del objeto*/
+    left: 0; /* Ajusta la linea a la izquierda para que se vea debajo del link*/
+    background-color: rgb(200, 188, 188); /* Color de la linea al superponer el cursor*/
+    opacity: 0; /* Opacidad en 0 hasta que se sobreponga el cursor */
+    transition: opacity 0.3s ease-in-out; /* Transicion de 0.3 segundos en lo que aparece la linea*/
+}
+
+.nav_link:hover a::after{
+    opacity: 1; /* Cuando el cursor esta encima del link se vuelve visible */
+}
+
+/* H1 de la pagina Index */
+.display-3{
+    color: rgb(255, 0, 0); /* Color del H1 en movimiento */
+    font-size: 25px; /* Tamaño de la fuente del H1 */
+    position: relative; /* Aqui posiciono al H1 para que pueda verse en movimiento sin afectar ningun otro elemento*/
+    overflow: hidden;/* El contenido es recortado y no se muestran barras de posición */
+    animation: moveText 20s linear infinite; /* El H1 se mueve de derecha a izquierda */
+}
+
+@keyframes moveText {
+    from {
+        transform: translateX(100%); /* Inicia el texto fuera del contenedor */
+    }
+    to {
+      transform: translateX(-150%); /* Mueve el texto hasta la posición inicial */
+    }
+  }
+
+/* Gifs en la pagina Index */
+
+.img_container{
+    display: flex;
+    background: crimson;
+    justify-content: center;
+    align-items: center;   
+     width: 100%;
+}
+.gifs_inicio {
+    width: 25%; /* Ajusta el ancho de las imágenes */
+    height: auto; /* Mantiene la proporción de aspecto de las imágenes */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para las imágenes */
+    transition: transform 0.3s ease; /* Animación suave para la transformación */    max-width: 100%;
+    margin: 10px;
+    border: 2px solid black; 
+}
+
+.gifs_inicio:hover {
+    transform: scale(1.3); /* Aumenta el tamaño de la imagen al pasar el cursor */
+}
+
+/* H1 de la pagina Acerca de nosotros */
+
+.display-1{
+    font-size: 4rem; /* Ajusta el tamaño según tu preferencia */
+    font-family: 'Impact', sans-serif; /* Tipografía */
+    margin-bottom: 20px; /* Añade espacio debajo del h1 */
+    color: #333; /* Ejemplo de color */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Aplica una sombra de texto sutil para darle más profundidad y dimensión al encabezado*/
+    border: 2px solid #ccc; /* Agrega un borde alrededor del encabezado para crear una separación visual más definida. */
+}
+
+.flag{
+    font-size: 2rem;
+}
+
+/* H2 de la pagina "acerca de nosotros" */
+.subtema-1{
+    font-family: 'Raleway', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: #333;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+/* Parrafos de mision y vision divididos*/
+.cont_adn {
+  display: flex; /* Activa el modo flexbox */
+  justify-content: space-between; /* Distribuye los párrafos a los lados */
+  width: 80%; /* Ajusta el ancho del contenedor como prefieras */
+  margin: 0 auto; /* Centra el contenedor horizontalmente */
+}
+
+.p_left, .p_right {
+  flex: 1; /* Asigna el mismo espacio a ambos párrafos */
+  padding: 20px; /* Añade espacio interno */
+  text-align: justify; /* Justifica el texto */
+  font-family: 'Arial', sans-serif; /* Ejemplo de tipografía */
+  font-size: 1.1rem; /* Ajusta el tamaño de la fuente */
+  line-height: 1.6; /* Ajusta el interlineado */
+  color: #333; /* Ejemplo de color */
+}
+
+.p_left {
+    background-color: #f2f2f2; /* Ejemplo de color de fondo */
+    border-right: 1px solid #ccc; /* Borde derecho */
+}
+  
+.p_right {
+    background-color: #eee; /* Color de fondo */
+}
+ 
+/* Lista desordenada de los valores de la empresa*/
+.list_val {
+    list-style: none; /* Remueve los puntos de las listas */
+    text-align: center; /* Centra la lista */
+}
+  
+.list_val li {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+  
+.list_val li:hover {
+    background-color: #e6e6e6;
+}
+
+.bot_info{
+    margin: 5px;
+    background-color: #b6b6b6;
+    align-items: center;
+}
+
+.img_lab {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* Pie de pagina */
+
+.footer {
+    margin-top: auto;
+    background-color: #000000;
+    color: #fff; 
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-info {
+    margin-right: 0;
+}
+
+.copyright {
+    margin-top: 10px;
+}
+
+
+/* Pagina de inventario.php*/
+
+.find_bar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.find_bar div{
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search_button{
+    background: black;
+    cursor: pointer;
+    border: none;
+    padding: 12px 20px;
+    color: azure;
+    font-size: 16px;
+    font-weight: bold;
+    position: relative;
+    border-radius: 12px;
+}
+.search_button::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, red, rgb(249, 100, 100), rgb(151, 62, 62), rgb(249, 100, 100), red,rgb(249, 100, 100), rgb(151, 62, 62), rgb(249, 100, 100));
+    background-size: 800%;
+    border-radius: 12px;
+    filter: blur(8px);
+    animation: glowing 20s linear infinite;
+}
+@keyframes glowing {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 400% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+
+.search_input {
+    border: 2px solid black;
+    width: 100%;
+    max-width: 80%;
+    padding: 10px;
+    margin: 0 auto;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.holder {
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid black; /* Add a black border */
+    margin: 0 auto; /* Center the container horizontally */
+    width: 40%; /* Adjust width as needed */
+  }
+  
+  /* Styles for each device item (.holder) */
+  .device-item {
+    flex: 1 0 30%; /* Set flex basis to 30% for each item */
+    margin: 10px; /* Add spacing between items */
+    text-align: center; /* Center text within each item */
+    border: 1px solid black; /* Add a black border to each item */
+    background-color: #f5f5f5; /* Light gray background */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  }
+  
+  /* Styles for the device image */
+  .device-item img {
+    width: 80%; /* Make the image fill the container width */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 10px; /* Add spacing below the image */
+  }
+  
+  /* Styles for the device information (.info_devices) */
+  .info_devices {
+    padding: 15px; /* Add padding to the information section */
+  }
+  
+  /* Styles for the serial number (#serie_number) */
+  #serie_number {
+    color: red; /* Use red color for the serial number */
+    font-size: 18px; /* Increase font size for emphasis */
+    font-weight: bold; /* Make the text bold */
+  }
+  
+  /* Styles for other device information paragraphs (.info_inv) */
+  .info_inv {
+    margin-bottom: 5px; /* Add spacing between information paragraphs */
+  }
+  
+  /* Styles for the "Ver más" link */
+  .info_devices a {
+  color: #E74C3C; /* Red color */
+  text-decoration: none; /* Remove default link underline */
+  font-weight: bold; /* Make the text bold */
+  transition: color 0.3s ease;
+  
+  &:hover {
+    color: #C0392B; /* Darker red color on hover */
+    text-shadow: 0 0 5px rgba(231, 76, 60, 0.5);
+  }
+}
