@@ -22,7 +22,7 @@ while ($fila = $resultado->fetch(PDO::FETCH_ASSOC)) {
 }
 
 // Crear el gráfico de pastel
-$grafico = new PieGraph(500,500);
+$grafico = new PieGraph(850,850);
 $grafico->SetShadow();
 
 // Crear un gráfico de pastel
