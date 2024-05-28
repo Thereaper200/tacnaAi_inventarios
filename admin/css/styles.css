@@ -1,226 +1,467 @@
 *{
-    margin:     0; /*margen 0 para todos los objetos*/
-    padding: 0;
-  }
+  margin:   0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+/* body de cabecera */
+
+.body_navbar{
+  background-color: #ddd;
+}
+
+/* Imagen de perrito en el inicio */
+
+.img_inicio {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  margin-top: 2px;
+  justify-content: center;
+
+}
+
+.body_navbar .dog{
+  width: 50%; /* Ajusta el ancho de las imágenes */
+  height: auto;
+  opacity: 0.8;
+}
+
+/* Barra de navegacion cuando entra el usuario su contraseña en la pagina de inicio */
+
+.navbar_logo{
+  height: 55px;
+  margin: 0px 20px; 
   
-  .container-navbarprelog{
+}
+
+
+.navbar_cabecera{
+  max-width: 100%;
+  margin: auto;
+  background-color: black;
+  margin-top: 0;
+  text-transform: capitalize;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.nav_horizontal{
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #b91e27;
+  z-index: 1;
+
+}
+
+.nav_horizontal a{ 
+  display: block;
+  padding: 15px 20px;
+  color: rgb(200, 188, 188);
+  text-decoration: none;
+  color:rgb(200, 188, 188);
+  text-decoration: none;
+}
+
+
+.nav_horizontal p{ 
+  display: block;
+  padding: 15px 20px;
+  color: rgb(200, 188, 188);
+  text-decoration: none;
+}
+
+.nav_horizontal li:hover::after {
+  content: "";
+  display: block;
+  background-color: gray; /* Adjust the color as needed */
+  width: 100%; /* Fills the entire width of the link */
+  height: 1px; /* Adjust the height of the bar */
+  bottom: 0;
+  left: 0; /* Adjust the position of the bar below the link */
+  transition: all 0.3s ease; /* Sets the transition for hover effect */
+}
+
+.trans:hover{
+  transform:scale(1.1) ;
+}
+
+.nav_vertical{
+  position: absolute;
+  display: none;
+  list-style: none;
+  width: 120px;
+  background-color: black;
+  border-bottom: 2px solid #b91e27;
+  border-left: 2px solid #b91e27;
+  border-right: 2px solid #b91e27;
+}
+
+.nav_horizontal li:hover .nav_vertical{
+  display: block;
+}
+
+.nav_vertical li:hover{
+  background-color: black;
+}
+
+.nav_vertical li a{
+  display: block;
+  color: rgb(200, 188, 188);
+  padding: 15px 15px 15px 20px;
+  text-decoration: none;
+}
+
+
+
+
+/* Barra de navegacion de antes de prelogearte */
+
+.container-navbarprelog{
     background-color: rgb(0, 0, 0); 
     display: flex; 
     justify-content: center; 
-  }
-  
-  .navbar_logoprelog{
-    height: 55px; /* Altura del logo */
-    margin: 0px 20px;
-  }
-  
-  .navbar_logoprelog:hover{
-    transform: scale(1.3);
-  }
+}
 
-  body.body_navbar {
-    background-color: white;
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
+.navbar_logoprelog{
+  height: 55px;
+  margin: 0px 20px;
+}
+
+.navbar_logoprelog:hover{
+  transform: scale(1.3);
+}
+
+/*formulario*/
+
+.formulario_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('../img/tacna3.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.icon_form{
+  height: 50px;
+  width: auto;
+}
+
+.formulario {
+  background-color: #ff000d8e;
+  color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  max-width: 400px;
+  text-align: center;
   }
   
-  .header {
-    background-color: #222;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 10;
-  }
-  
-  .container_navbar {
-    background-color: black;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-    list-style: none;
-  }
-  
-  .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .nav_list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-  }
-  
-  .nav_link {
-    position: relative;
-  }
-  
-  .nav_link a {
-    display: inline-block;
-    color: gray;
-    text-decoration: none;
-    padding: 10px 15px;
-    transition: background-color 0.3s ease;
-    font-size: 16px;
-    font-weight: 600;
-    margin-left: 10px;
-    text-transform: capitalize;
-  }
-  
-  .nav_link a:hover {
-    background-color: red;
-  }
-  
-  .nav_link:first-child a img {
-    height: 40px;
-    vertical-align: middle;
-  }
-  
-  .submenu {
-    position: absolute;
-    left: 0;
-    top: 100%;
-    background-color: black;
-    padding: 10px;
-    display: none;
-  }
-  
-  .nav_link:hover .submenu {
-    display: block;
-  }
-  
-  .sub_link a {
-    color: white;
-    text-decoration: none;
-    padding: 10px;
-    transition: background-color 0.3s ease;
-    font-size: 14px;
-  }
-  
-  .sub_link a:hover {
-    background-color: red;
-  }
-  
-  .nav_link a:hover::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 2px;
-    background-color: red;
-    transition: width 0.3s ease;
-  }
-  
-  .nav_link a:hover::after {
-    width: 50%;
-  }
-  
-  .log_out {
-    background-color: red;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    margin-left: 10px;
-  }
-  
-  .log_out:hover {
-    background-color: #3e8e41;
-  }
-  /*formulario*/
-  
-  /* section donde se encuentra el formulario */
-  .formulario_container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-image: url('../img/tacna3.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-  
-  .icon_form{
-    height: 50px;
-    width: auto;
-  }
-  
-  .formulario {
-    background-color: #ff000d8e;
-    color: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    max-width: 400px;
-    text-align: center;
-    }
-    
-  .formulario label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  
-  .formulario input[type="text"],
-  .formulario input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
-  
-  .formulario button[type="submit"] {
-    background-color: #c01b24; 
-    color: #fff;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .formulario button[type="submit"]:hover {
-    background-color: #99171e;
-  }
-  
-  .formulario small {
-    color: #000000;
-    font-size: 0.8em;
-    margin: 5px 5px 15px 5px;
-  }
-  
-  /* Pie de pagina */
-  
-  .footer {
-    margin-top: auto;
-    background-color: #000000;
-    color: #fff; 
-    padding: 20px;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-  }
-  
+.formulario label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.formulario input[type="text"],
+.formulario input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.formulario button[type="submit"] {
+  background-color: #c01b24; 
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.formulario button[type="submit"]:hover {
+  background-color: #99171e;
+}
+
+.formulario small {
+  color: #000000;
+  font-size: 0.8em;
+  margin: 5px 5px 15px 5px;
+}
+
+/* Pie de pagina */
+
+.footer {
+  background-color: #000000;
+  color: #fff; /* Adjusted color for improved contrast */
+  padding: 10px 20px; /* Reduced padding for smaller size */
+  text-align: center;
+  position: fixed; /* Ensures footer stays at bottom */
+  bottom: 0;
+  width: 100%;
+  height: 50px; /* Set a fixed height for consistent size */
+}
+
+.footer.sticky { /* Add a new class */
+  position: static; /* Reset position to allow other content to flow */
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between; /* Adjust spacing for better layout */
+  align-items: center;
+}
+
+.footer-info {
+  margin-right: 10px; /* Maintain some spacing for responsiveness */
+  display: flex; /* Allow wrapping if content overflows on smaller screens */
+  flex-wrap: wrap; /* Enable content to wrap on small screens */
+}
+
+.copyright {
+  margin: 0; /* Remove margin for cleaner layout */
+  font-size: 0.8rem; /* Adjust font size for smaller screens */
+}
+
+@media only screen and (max-width: 900px) {
   .footer-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column; /* Stack items vertically on small screens */
   }
-  
-  .footer-info {
-    margin-right: 0;
-  }
-  
-  .copyright {
-    margin-top: 10px;
-  }
-  
 
+  .footer-info {
+    margin: 0 10px 10px; /* Adjust margins for responsiveness */
+  }
+}
+
+/* Estilos de columna izquierda (contenedor de formulario) */
+
+.head_form {
+  flex: 1;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid #ddd;
+  padding: 20px;
+}
+
+.form_title {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.form_container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form_boxes {
+  display: flex;
+}
+
+.form_boxes label {
+  width: 120px;
+  margin-right: 10px;
+}
+
+.input_button {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.input_button:hover {
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+select.form_boxes {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.btn_group {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.btn_success {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn_warning {
+  background-color: #ffc107;
+  color: black;
+}
+
+.btn_danger {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn_submit {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn_primary {
+  background-color: #a4ada3;
+  color: white;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+/* Estilos de área de ubicación */
+select.form_boxes[name="slUbic"] {
+  width: 50%;
+  margin: 5px;
+}
+
+/* Estilos de la columna derecha (actualmente vacía; agregue estilos según sea necesario) */
+/*  Estilos de columna derecha aquí */
+
+/* Estilos de la barra de búsqueda */
+.busqueda {
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  width: calc(100% - 80px);
+  margin-right: 10px;
+}
+
+.busqueda:hover {
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .principal_columns {
+    flex-direction: column;
+  }
+
+  .head_form {
+    flex: 1; 
+  }
+
+  .form_boxes {
+    flex-direction: column; 
+  }
+
+  .form_boxes label {
+    margin-bottom: 5px;
+  }
+
+  .btn-group {
+    flex-direction: column; 
+  }
+
+  .btn {
+    margin-bottom: 5px;
+  }
+
+  .busqueda {
+    width: 100%;
+  }
+}
+
+
+.inside_form {
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid #ddd;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+/* Table Styles */
+
+.table_inside {
+  width: 100%;
+  border-collapse: collapse;
+
+} 
+
+.table_insideuser {
+  width: 25%;
+  border-collapse: collapse;
+  margin: 0 auto;
+} 
+
+.table_inside th,
+.table_inside td {
+  padding: 8px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.table_inside thead {
+  background-color: #f1f1f1;
+}
+
+/* Pagination Styles */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  flex-wrap: wrap; /* Wrap pagination items if they overflow */
+}
+
+.pagination .btn {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.pagination .btn.border {
+  border: 1px solid #ddd;
+}
+
+.pagination .btn:hover {
+  opacity: 0.8;
+}
+
+.pagination .active { /* Style for the current page */
+  background-color: #ddd;
+}
+
+/* Responsive Styles */
+@media (max-width: 1000px) {
+  .inside_form {
+    /* Adjust padding for smaller screens */
+    padding: 10px;
+  }
+
+  .table_inside {
+    /* Make table more readable on narrow screens */
+    font-size: 0.8em;
+  }
+
+  .table_inside th,
+  .table_inside td {
+    /* Reduce padding for better fit */
+    padding: 5px;
+  }
+
+  .pagination {
+    /* Wrap pagination buttons on smaller screens */
+    flex-wrap: wrap;
+  }
+}

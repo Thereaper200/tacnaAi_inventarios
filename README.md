@@ -19,7 +19,7 @@ Back-End:
 - JGraph
 
 Servidor:
-000WebHostApp
+- 000WebHostApp
 
 Actualmente la plataforma se encuentra en una transición de tecnologias en todos los niveles con el objetivo de terminar con estas tecnologías:
 

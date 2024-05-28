@@ -11,7 +11,7 @@ $accion = (isset($_POST["accion"])) ? $_POST["accion"] : "";
 
 include("../config/db.php");
 
-$resultados_por_pagina = 7;
+$resultados_por_pagina = 25;
 $pagina_actual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
 $offset = ($pagina_actual - 1) * $resultados_por_pagina;
 
@@ -141,39 +141,33 @@ foreach ($listaCombinada as $dispositivo) {
 ?>
 
 
-<div class="col-md-5">
-    <div class="card tabla-izquierda">
-        <div class="card-header">
-            Reporte
-        </div>
-        <div class="card-body">
+<div class="principal_columns">
+    <div class="head_form">
+        <h2 class="form_title">Reporte</h2>
+
+        <div class="form_container">
             <form method="POST" enctype="multipart/form-data">
                 
-                <div class="form-group">
+                <div class="form_boxes">
                     <label for="txtSN">Serial Number:</label>
-                    <input type="text" class="form-control" value="<?php echo $txtSN; ?>" name="txtSN" id="txtSN" placeholder="SN" pattern="[a-zA-Z0-9,]*{0,32}" autocomplete="off">
+                    <input type="text" class="input_button" value="<?php echo $txtSN; ?>" name="txtSN" id="txtSN" placeholder="SDLXQC05ZGMW4" pattern="[a-zA-Z0-9,]*{0,32}" autocomplete="off">
                 </div>
-
-                <div class="form-group">
+                <div class="form_boxes">
                     <label for="txtBill">Factura:</label>
-                    <input type="text" class="form-control" value="<?php echo $txtBill; ?>" name="txtBill" id="txtBill" placeholder="Factura" pattern="[a-z, A-Z, 0-9, \-]{0,32}" autocomplete="off">
+                    <input type="text" class="input_button" value="<?php echo $txtBill; ?>" name="txtBill" id="txtBill" placeholder="PLA-00048A" pattern="[a-z, A-Z, 0-9, \-]{0,32}" autocomplete="off">
                 </div>
 
-                <div class="form-group">
+                <div class="form_boxes">
                     <label for="txtCom">Comentarios:</label>
-                    <input type="text" class="form-control" value="<?php echo $txtCom; ?>" name="txtCom" id="txtCom" placeholder="Comentarios" pattern="[a-z, A-Z, 0-9,[], ()]{0,}" autocomplete="off">
-                </div>
+                    <input type="text" class="input_button" value="<?php echo $txtCom; ?>" name="txtCom" id="txtCom" placeholder="Modelo obsoleto." pattern="[a-z, A-Z, 0-9,[], ()]{0,}" autocomplete="off">
 
-                <div class="form-group">
+                <div class="form_boxes">
                     <label for="slModel">Modelo:</label>
-                    <input type="text" class="form-control" value="<?php echo $lsModel; ?>" name="slModel" id="slModel" placeholder="Modelo" pattern="[a-zA-Z0-9]{0,32}" autocomplete="off">
+                    <input type="text" class="input_button" value="<?php echo $lsModel; ?>" name="slModel" id="slModel" placeholder="Modelo" pattern="[a-zA-Z0-9]{0,32}" autocomplete="off">
                 </div>
-
-                <br>
-        
-                
+                    <br>
                 <label for="slUbic">Ubicacion:</label>
-                <select class="form-group" name="slUbic">
+                <select class="form_boxes" name="slUbic">
                     <option selected disabled>-- Seleccione la ubicación --</option>
                     <option value="Oficina 1"<?php if ($lsUbicSelec == 'Oficina 1') echo ' selected'; ?>>Oficina 1</option>
                     <option value="Oficina 2"<?php if ($lsUbicSelec == 'Oficina 2') echo ' selected'; ?>>Oficina 2</option>
@@ -194,20 +188,20 @@ foreach ($listaCombinada as $dispositivo) {
 
                 <br>
                 
-                <div class="btn-group" role="group" aria-label="">
-                    <button type="submit" name="accion" value="Agregar" class="btn btn-success">Agregar</button>
+                <div class="btn_group" role="group" aria-label="">
+                    <button type="submit" name="accion" value="Agregar" class="btn btn_success">Agregar</button>
                     <?php if($_COOKIE["usuario"] == "Brandon" || $_COOKIE["usuario"] == "Abel" || $_COOKIE["usuario"] == "Shirley"){?>
-                    <button type="submit" name="accion" value="Modificar" class="btn btn-warning">Modificar</button>
+                    <button type="submit" name="accion" value="Modificar" class="btn btn_warning">Modificar</button>
                     <?php }?>
-                    <button type="submit" name="accion" value="Cancelar" class="btn btn-danger">Cancelar</button>
-                    <button type="submit" name="accion" value="Ubic" class="btn btn-primary">Update Ubic</button>
+                    <button type="submit" name="accion" value="Cancelar" class="btn btn_danger">Cancelar</button>
+                    <button type="submit" name="accion" value="Ubic" class="btn btn_submit">Update Ubic</button>
                 </div>
 
-                <div class="form-group">
+                <div class="form_boxes">
                     <br>
                     <label for="txtBus">Búsqueda:</label>
                     <input type="text" class="busqueda" value="<?php echo $txtBus; ?>" name="txtBus" id="txtBus" placeholder="Búsqueda" autocomplete="off">
-                    <input type="submit" name="accion" value="Buscar" class="btn btn-primary">
+                    <input type="submit" name="accion" value="Buscar" class="btn btn_submit">
                 </div>
 
             </form>
@@ -216,8 +210,8 @@ foreach ($listaCombinada as $dispositivo) {
 </div>
 
 
-<div class="col-md-7">
-    <table class="table table-bordered tabla-izquierda">
+<div class="inside_form">
+    <table class="table_inside">
         
         <thead>
             <tr>
@@ -247,7 +241,7 @@ foreach ($listaCombinada as $dispositivo) {
                     <form method="POST">
                         <input type="hidden" name="txtSN" id="txtSN" value="<?php echo $dispositivo["sn"];?>" />
                         <input type="hidden" name="slModel" value="<?php echo $lsModelSelec; ?>" />
-                        <button type="submit" name="accion" value="Seleccionar" class="btn btn-primary">
+                        <button type="submit" name="accion" value="Seleccionar" class="btn btn_primary">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-click" width="22" height="22" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <path d="M3 12l3 0" />
@@ -259,7 +253,7 @@ foreach ($listaCombinada as $dispositivo) {
                             </svg>
                         </button>
                         <?php if($_COOKIE["usuario"] == "Brandon" || $_COOKIE["usuario"] == "Abel" || $_COOKIE["usuario"] == "Shirley"){?>
-                        <button type="submit" name="accion" value="Borrar" class="btn btn-danger">
+                        <button type="submit" name="accion" value="Borrar" class="btn btn_danger">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="22" height="22" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <path d="M4 7l16 0" />
@@ -273,11 +267,7 @@ foreach ($listaCombinada as $dispositivo) {
                             <br>
                             <br>
                         <input 
-                        class="form-check-input float-start"
-                        type = "checkbox"
-                        name = "outofservice"
-                        
-                        >
+                        class="form_check_input" type = "checkbox" name = "outofservice">
 
                     </form>
                 </td>
@@ -315,11 +305,10 @@ foreach ($listaCombinada as $dispositivo) {
         <form action="csv.php" method="POST" enctype="multipart/form-data">
             <input type="submit" value="Exportar" name=csv class='btn border margin-left padding-left'></a>
         </form>
-    
-</div>
+        </div>
 
-<div class="col-md-5">
-    <table class="table table-bordered tabla-izquierda">
+<div class="principal_columns">
+    <table class="table_inside">
         <thead>
             <tr>
                 <th>SN</th>
@@ -339,8 +328,8 @@ foreach ($listaCombinada as $dispositivo) {
                 <td>
                     <form method="POST">
                         <input type="hidden" name="txtSN" value="<?php echo $encontrado["sn"]; ?>" />
-                        <input type="submit" name="accion" value="Seleccionar" class="btn btn-primary">
-                        <input type="submit" name="accion" value="Borrar" class="btn btn-danger">
+                        <input type="submit" name="accion" value="Seleccionar" class="btn btn_primary">
+                        <input type="submit" name="accion" value="Borrar" class="btn btn_danger">
                     </form>
                 </td>
             </tr>
