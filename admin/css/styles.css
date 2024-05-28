@@ -6,6 +6,10 @@
 }
 /* body de cabecera */
 
+.body_navbar{
+  background-color: #ddd;
+}
+
 /* Imagen de perrito en el inicio */
 
 .img_inicio {
