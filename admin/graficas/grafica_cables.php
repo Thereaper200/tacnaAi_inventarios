@@ -17,7 +17,7 @@ while ($fila = $resultado->fetch(PDO::FETCH_ASSOC)) {
 }
 
 // Crear el gráfico de barras
-$grafico = new Graph(350,250);
+$grafico = new Graph(850,300);
 $grafico->SetScale('textlin');
 $grafico->SetShadow();
 
