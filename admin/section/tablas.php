@@ -36,8 +36,8 @@ $listainventarios = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 
-<div class="col-md-12">
-    <table class="table table-bordered tabla-izquierda">
+<div class="inside_form">
+    <table class="table_inside">
         
         <thead>
             <tr>

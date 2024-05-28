@@ -82,39 +82,37 @@ $listainventario = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 
 
 
-<div class="col-md-5">
-    <div class="card">
-        <div class="card-header">
-            Pedidos
-        </div>
-        <div class="card-body">
+<div class="principal_columns">
+    <div class="head_form">
+        <h2 class="form_title">Pedidos</h2>
+        <div class="form_container">
             <form method="POST" enctype="multipart/form-data">
                 
-                <div class="form-group">
-                    <input type="hidden" class="form-control" value="<?php echo $txtID; ?>" name="txtID" id="txtID" placeholder="ID"  autocomplete="off">
+                <div class="form_boxes">
+                    <input type="hidden" class="input_button" value="<?php echo $txtID; ?>" name="txtID" id="txtID" placeholder="ID"  autocomplete="off">
                 </div>
                 
 
-                <div class="form-group">
+                <div class="form_boxes">
                     <label for="txtSupervisor">Supervisor:</label>
-                    <input type="text" class="form-control" value="<?php echo $txtSupervisor; ?>" name="txtSupervisor" id="txtSupervisor" placeholder="Supervisor" pattern="[a-z, A-Z]{4,8}" autocomplete="off">
+                    <input type="text" class="input_button" value="<?php echo $txtSupervisor; ?>" name="txtSupervisor" id="txtSupervisor" placeholder="Supervisor" pattern="[a-z, A-Z]{4,8}" autocomplete="off">
                 </div>
 
-                <div class="form-group">
+                <div class="form_boxes">
                     <label for="txtPedido">Pedido:</label>
-                    <input type="text" class="form-control" value="<?php echo $txtPedido; ?>" name="txtPedido" id="txtPedido" placeholder="Pedido" pattern="[a-z, A-Z, 0-9]{0,255}" autocomplete="off">
+                    <input type="text" class="input_button" value="<?php echo $txtPedido; ?>" name="txtPedido" id="txtPedido" placeholder="Pedido" pattern="[a-z, A-Z, 0-9]{0,255}" autocomplete="off">
                 </div>
 
                 
-                <div class="form-group">
+                <div class="form_boxes">
                     <label for="txtComentarios">Motivo:</label>
-                    <input type="text" class="form-control" value="<?php echo $txtComentarios; ?>" name="txtComentarios" id="txtComentarios" placeholder="Motivo" pattern="[a-z, A-Z, 0-9]{0,255}" autocomplete="off">
+                    <input type="text" class="input_button" value="<?php echo $txtComentarios; ?>" name="txtComentarios" id="txtComentarios" placeholder="Motivo" pattern="[a-z, A-Z, 0-9]{0,255}" autocomplete="off">
                 </div>
                 
                 
                 <?php if($_COOKIE["usuario"] == "Brandon" || $_COOKIE["usuario"] == "Abel" || $_COOKIE["usuario"] == "Shirley"){?>
                 <label for="txtProceso">Estado:</label>
-                <select class="form-group" name="txtProceso" value="<?php echo $txtProcesoSelec;?>">
+                <select class="form_boxes" name="txtProceso" value="<?php echo $txtProcesoSelec;?>">
                     <option selected disabled>-- Seleccione la ubicación --</option>
                     <option value="Notificado"<?php if ($txtProcesoSelec == 'Notificado') echo ' selected'; ?>>Notificado</option>
                     <option value="Rechazado"<?php if ($txtProcesoSelec == 'Rechazado') echo ' selected'; ?>>Rechazado</option>
@@ -123,10 +121,10 @@ $listainventario = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
                 </select>
                 <?php }?>
 
-                <div class="btn-group" role="group" aria-label="">
-                    <button type="submit" name="accion" value="Agregar" class="btn btn-success">Agregar</button>
-                    <button type="submit" name="accion" value="Modificar" class="btn btn-warning">Modificar</button>
-                    <button type="submit" name="accion" value="Cancelar" class="btn btn-danger">Cancelar</button>
+                <div class="btn_group" role="group" aria-label="">
+                    <button type="submit" name="accion" value="Agregar" class="btn btn_success">Agregar</button>
+                    <button type="submit" name="accion" value="Modificar" class="btn btn_warning">Modificar</button>
+                    <button type="submit" name="accion" value="Cancelar" class="btn btn_danger">Cancelar</button>
                 </div>
             </form>
         </div>
@@ -135,8 +133,8 @@ $listainventario = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 
 
 
-<div class="col-md-7">
-    <table class="table table-bordered">
+<div class="inside_form">
+    <table class="table_inside">
         <thead>
             <tr>
                 <th>ID</th>
@@ -160,8 +158,8 @@ $listainventario = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
                 <td>
                     <form method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="txtID" id="txtID" value="<?php echo $dispositivo["id"];?>" />
-                        <input type="submit" name="accion" value="Seleccionar" class="btn btn-primary">
-                        <input type="submit" name="accion" value="Borrar" class="btn btn-danger">
+                        <input type="submit" name="accion" value="Seleccionar" class="btn btn_primary">
+                        <input type="submit" name="accion" value="Borrar" class="btn btn_danger">
                     </form>
                 </td>
             </tr>

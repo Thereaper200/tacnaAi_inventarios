@@ -21,13 +21,13 @@ $listainventarios = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
-<div class="col-md-12">
-    <table class="table table-bordered tabla-izquierda">
+<div class="inside_form">
+    <table class="table_inside">
 
     <div>
         <form method="POST" enctype="multipart/form-data">
             <input type="date" name="txtFecha" id="txtFecha">
-            <input type="submit" name="accion" value="Buscar" class="btn btn-primary">
+            <input type="submit" name="accion" value="Buscar" class="btn btn_primary">
         </form>
     </div>
 

@@ -21,43 +21,39 @@ error_reporting(E_ALL & ~E_NOTICE);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link  type="text/css" rel="stylesheet" href="../admin/css/styles.css">
+    <link  type="text/css" rel="stylesheet" href="../css/styles.css">
     <title>Portal Administrador</title>
     <!--<link rel="icon" href="../img/logos/iconpl.png" type="image/x-icon">-->
+    <link rel="icon" href="../img/logos/iconpl.png" type="image/x-icon">
+    <link rel="icon" href="../../img/logos/iconpl.png" type="image/x-icon">
 </head>
 
-
-<body class="body_navbar">
-
 <?php $url="http://".$_SERVER["HTTP_HOST"]."/tacnatest";  ?>
-
-  <header class="header">
-    <section class="container_navbar">
-        <nav class="navbar">
-
-            <ul class="nav_list">
-                <li class="nav_link"><a href="../admin/inicio.php"><img src="../img/logos/logopl.png" class="navbar_logo"></li>
-                
-                <li class="nav_link"><span><?php echo $_COOKIE["usuario"];?></span></a></li>x
-
-                <li class="nav_link"><a href="<?php echo $url; ?>/admin/section/inventario.php"><span>Reporte</span></a></li>
-
-                <li class="nav_link"><a>Inventarios</a>
-                    <ul class="submenu">
-                        <li class="sub_link"><a href="<?php echo $url; ?>/admin/section/tablas.php">Tablas</a></li>
-                        <li class="sub_link"><a href="<?php echo $url; ?>/admin/section/historial.php">Historial</a></li>
-                        <li class="sub_link"><a href="<?php echo $url; ?>/admin/section/invent_test.php">Inventario</a></li>
-                    </ul>
-                </li>
-                <li class="nav_link"><a href="<?php echo $url; ?>/admin/section/pedidos.php">Pedidos</a></li>
-                <li class="nav_link">
-                    <?php if(isset($_COOKIE['usuario']) && $_COOKIE["usuario"] == "Brandon" || $_COOKIE["usuario"] == "Abel" || $_COOKIE["usuario"] == "Shirley" ) {?>
-                    <a href="<?php echo $url; ?>/admin/section/usuarios.php">Usuarios</a>
-                    <?php }?>
-                </li>
-                <li class="nav_link">
-                    <a class="log_out" href="<?php echo $url; ?>/admin/logout.php">Cerrar sesion</a>
-                </li>
+<body class="body_navbar">
+  <header>
+    <section class="cont_navbarinicio">
+      <nav class="navbar_cabecera">
+      <ul class="nav_horizontal">
+      <li><p class="username"><?php echo $_COOKIE["usuario"];?></p></li>
+        <li class="trans"><a href="../../admin/inicio.php"><img src="../img/logos/logopl.png" class="navbar_logo"></a></li>
+        <li class="trans"><a href="<?php echo $url; ?>/admin/section/inventario.php">Reporte</a></li>
+        <li class="trans"><a>Registro</a>
+            <ul class="nav_vertical">
+                <li class="trans"><a  href="<?php echo $url; ?>/admin/section/tablas.php">Tablas</a></li>
+                <li class="trans"><a  href="<?php echo $url; ?>/admin/section/historial.php">Historial</a></li>
+                <li class="trans"><a  href="<?php echo $url; ?>/admin/section/invent_test.php">Inventario</a></li>
             </ul>
-        </nav>
+        </li>
+        <li class="trans"><a class="visible_a" href="<?php echo $url; ?>/admin/section/pedidos.php">Pedidos</a></li>
+        <li class="trans">
+            <?php if(isset($_COOKIE['usuario']) && ($_COOKIE["usuario"] == "Brandon" || $_COOKIE["usuario"] == "Abel" || $_COOKIE["usuario"] == "Shirley"  || $_COOKIE["usuario"] == "jovan solis")) {?>
+            <a href="<?php echo $url; ?>/admin/section/usuarios.php">Usuarios</a>
+            <?php }?>
+        </li>
+        <li class="trans">
+            <a class="visible_a" href="<?php echo $url; ?>/admin/logout.php">Cerrar sesion</a>
+        </li>
+      </ul>
+      </nav>
     </section>
   </header>
