@@ -7,7 +7,7 @@
 /* body de cabecera */
 
 .body_navbar{
-  background-color: #ddd;
+  background: #ddd;
 }
 
 /* Imagen de perrito en el inicio */
@@ -29,23 +29,24 @@
 
 /* Barra de navegacion cuando entra el usuario su contraseña en la pagina de inicio */
 
-.navbar_logo{
+.navbar_logo{ 
   height: 55px;
   margin: 0px 20px; 
-  
+  filter: drop-shadow(0px 0px 3px black);
 }
 
 
 .navbar_cabecera{
   max-width: 100%;
-  margin: auto;
-  background-color: black;
+  background: linear-gradient(to bottom, red,black);
   margin-top: 0;
-  text-transform: capitalize;
+  text-transform: uppercase;
   position: sticky;
   top: 0;
   left: 0;
   z-index: 1;
+  height: 75px;
+  border-bottom: 2px solid #b91e27;
 }
 
 .nav_horizontal{
@@ -53,13 +54,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid #b91e27;
   z-index: 1;
-
 }
 
 .nav_horizontal a{ 
-  display: block;
+  display: block; 
   padding: 15px 20px;
   color: rgb(200, 188, 188);
   text-decoration: none;
@@ -78,12 +77,12 @@
 .nav_horizontal li:hover::after {
   content: "";
   display: block;
-  background-color: gray; /* Adjust the color as needed */
-  width: 100%; /* Fills the entire width of the link */
-  height: 1px; /* Adjust the height of the bar */
+  background: gray;
+  width: 100%;
+  height: 1px;
   bottom: 0;
-  left: 0; /* Adjust the position of the bar below the link */
-  transition: all 0.3s ease; /* Sets the transition for hover effect */
+  left: 0;
+  transition: all 0.3s ease;
 }
 
 .trans:hover{
@@ -95,7 +94,7 @@
   display: none;
   list-style: none;
   width: 120px;
-  background-color: black;
+  background: black;
   border-bottom: 2px solid #b91e27;
   border-left: 2px solid #b91e27;
   border-right: 2px solid #b91e27;
@@ -106,7 +105,7 @@
 }
 
 .nav_vertical li:hover{
-  background-color: black;
+  background: black;
 }
 
 .nav_vertical li a{
@@ -122,7 +121,7 @@
 /* Barra de navegacion de antes de prelogearte */
 
 .container-navbarprelog{
-    background-color: rgb(0, 0, 0); 
+    background: rgb(0, 0, 0); 
     display: flex; 
     justify-content: center; 
 }
@@ -142,10 +141,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-image: url('../img/tacna3.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
+  height: 90vh;
+  background: url('../img/tacna3.jpg') center/ cover fixed no-repeat;
 }
 
 .icon_form{
@@ -154,7 +151,7 @@
 }
 
 .formulario {
-  background-color: #ff000d8e;
+  background: #ff000d8e;
   color: #fff;
   padding: 30px;
   border-radius: 8px;
@@ -178,7 +175,7 @@
 }
 
 .formulario button[type="submit"] {
-  background-color: #c01b24; 
+  background: #c01b24; 
   color: #fff;
   padding: 12px 20px;
   border: none;
@@ -188,7 +185,7 @@
 }
 
 .formulario button[type="submit"]:hover {
-  background-color: #99171e;
+  background: #99171e;
 }
 
 .formulario small {
@@ -200,7 +197,7 @@
 /* Pie de pagina */
 
 .footer {
-  background-color: #000000;
+  background: #000000;
   color: #fff; /* Adjusted color for improved contrast */
   padding: 10px 20px; /* Reduced padding for smaller size */
   text-align: center;
@@ -245,7 +242,7 @@
 
 .head_form {
   flex: 1;
-  background-color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.9);
   border: 1px solid #ddd;
   padding: 20px;
 }
@@ -300,27 +297,27 @@ select.form_boxes {
 }
 
 .btn_success {
-  background-color: #28a745;
+  background: #28a745;
   color: white;
 }
 
 .btn_warning {
-  background-color: #ffc107;
+  background: #ffc107;
   color: black;
 }
 
 .btn_danger {
-  background-color: #dc3545;
+  background: #dc3545;
   color: white;
 }
 
 .btn_submit {
-  background-color: #007bff;
+  background: #007bff;
   color: white;
 }
 
 .btn_primary {
-  background-color: #a4ada3;
+  background: #a4ada3;
   color: white;
 }
 
@@ -383,7 +380,7 @@ select.form_boxes[name="slUbic"] {
 
 
 .inside_form {
-  background-color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.9);
   border: 1px solid #ddd;
   margin: 20px auto;
   padding: 20px;
@@ -411,7 +408,7 @@ select.form_boxes[name="slUbic"] {
 }
 
 .table_inside thead {
-  background-color: #f1f1f1;
+  background: #f1f1f1;
 }
 
 /* Pagination Styles */
@@ -439,7 +436,7 @@ select.form_boxes[name="slUbic"] {
 }
 
 .pagination .active { /* Style for the current page */
-  background-color: #ddd;
+  background: #ddd;
 }
 
 /* Responsive Styles */

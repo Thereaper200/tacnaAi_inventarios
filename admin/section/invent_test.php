@@ -38,73 +38,72 @@ switch ($accion) {
 ?>
 
 
-<div class="col-md-5">
-    <div class="card tabla-izquierda">
-        <div class="card-header">
-            Inventario
-        </div>
-        <div class="card-body">
+<div class="principal_columns">
+    <div class="head_form">
+        <h2 class="form_title">Inventario</h2>
+
+        <div class="form_container">
             <form action="upload.php" method="POST" enctype="multipart/form-data">
 
                 <?php switch($accion){ case "Supervisor no fijo":?>
-                    <div class="form-group">
+                    <div class="form_boxes">
                         <label for="txtNom">Supervisor:</label>
-                        <input type="text" class="form-control"  name="txtNom" id="txtNom" placeholder="Supervisor"  autocomplete="off">
+                        <input type="text" class="input_button"  name="txtNom" id="txtNom" placeholder="Supervisor"  autocomplete="off">
                     </div>
                 <?php }?>
 
-                <div class="form-group">
+                <div class="form_boxes">
                     <label for="file">Archivo:</label>
-                    <input type="file" class="form-control"  name="archivo" id="archivo"  accept=".numbers, .xlsx" autocomplete="off">
+                    <input type="file" class="input_button"  name="archivo" id="archivo"  accept=".numbers, .xlsx" autocomplete="off">
                 </div>
 
-                <div class="form-group">
+                <div class="form_boxes">
                     <label for="txtiPad">iPad:</label>
-                    <input type="input" class="form-control"  name="txtiPad" id="txtiPad" placeholder="iPad" autocomplete="off">
+                    <input type="input" class="input_button"  name="txtiPad" id="txtiPad" placeholder="iPad" autocomplete="off">
                 </div>
 
-                <div class="form-group">
+                <div class="form_boxes">
                     <label for="txtLapiz">Lapices:</label>
-                    <input type="input" class="form-control"  name="txtLapiz" id="txtLapiz" placeholder="Lapices" autocomplete="off">
+                    <input type="input" class="input_button"  name="txtLapiz" id="txtLapiz" placeholder="Lapices" autocomplete="off">
                 </div>
 
-                <div class="form-group">
+                <div class="form_boxes">
                     <label for="txtCargas">Adaptadores:</label>
-                    <input type="input" class="form-control"  name="txtCargas" id="txtCargas" placeholder="Adaptadores" autocomplete="off">
+                    <input type="input" class="input_button"  name="txtCargas" id="txtCargas" placeholder="Adaptadores" autocomplete="off">
                 </div>
 
-                <div class="form-group">
+                <div class="form_boxes">
                     <label for="txtCables">Cables:</label>
-                    <input type="input" class="form-control"  name="txtCables" id="txtCables" placeholder="Cables" autocomplete="off">
+                    <input type="input" class="input_button"  name="txtCables" id="txtCables" placeholder="Cables" autocomplete="off">
                 </div>
 
-                <div class="form-group">
+                <div class="form_boxes">
                     <label for="txtTeclados">Teclados:</label>
-                    <input type="input" class="form-control"  name="txtTeclados" id="txtTeclados" placeholder="Teclados" autocomplete="off">
+                    <input type="input" class="input_button"  name="txtTeclados" id="txtTeclados" placeholder="Teclados" autocomplete="off">
                 </div>
 
                 <?php if($_COOKIE["usuario"] == "Briza" || $_COOKIE["usuario"] == "Priscilla" || $_COOKIE["usuario"] == "Brandon"){?>
-                    <div class="form-group">
+                    <div class="form_boxes">
                         <label for="txtMacbook">MacBook:</label>
-                        <input type="input" class="form-control"  name="txtMacbook" id="txtMacbook" placeholder="MacBook" autocomplete="off">
+                        <input type="input" class="input_button"  name="txtMacbook" id="txtMacbook" placeholder="MacBook" autocomplete="off">
                     </div>
                 <?php }?>
 
                 <?php if($_COOKIE["usuario"] == "Cesar" || $_COOKIE["usuario"] == "Alex" || $_COOKIE["usuario"] == "Brandon"){ ?>
-                    <div class="form-group">
+                    <div class="form_boxes">
                         <label for="txtHDD">HDD:</label>
-                        <input type="input" class="form-control"  name="txtHDD" id="txtHDD" placeholder="HDD" autocomplete="off">
+                        <input type="input" class="input_button"  name="txtHDD" id="txtHDD" placeholder="HDD" autocomplete="off">
                     </div>
 
-                    <div class="form-group">
+                    <div class="form_boxes">
                         <label for="txtMouse">Mouse:</label>
-                        <input type="input" class="form-control"  name="txtMouse" id="txtMouse" placeholder="Mouse" autocomplete="off">
+                        <input type="input" class="input_button"  name="txtMouse" id="txtMouse" placeholder="Mouse" autocomplete="off">
                     </div>
                 <?php }?>
                 
-                <div class="form-group">
+                <div class="form_boxes">
                     <label for="txtComent">Comentarios:</label>
-                    <input type="input" class="form-control"  name="txtComent" id="txtComent" placeholder="Comentarios" autocomplete="off">
+                    <input type="input" class="input_button"  name="txtComent" id="txtComent" placeholder="Comentarios" autocomplete="off">
                 </div>
 
                
@@ -113,7 +112,7 @@ switch ($accion) {
         
                 
                 <label for="slUbic">Ubicacion:</label>
-                <select class="form-group" name="slUbic">
+                <select class="form_boxes" name="slUbic">
                     <option selected disabled>-- Seleccione la ubicación --</option>
                     <option value="Oficina 1"<?php if ($lsUbicSelec == 'Oficina 1') echo ' selected'; ?>>Oficina 1</option>
                     <option value="Oficina 2"<?php if ($lsUbicSelec == 'Oficina 2') echo ' selected'; ?>>Oficina 2</option>
@@ -132,16 +131,16 @@ switch ($accion) {
 
                 <br>
                 
-                <div class="btn-group" role="group" aria-label="">
-                    <button type="submit" class="btn btn-success">Agregar</button>
-                    <button type="submit" name="accion" value="Cancelar" class="btn btn-danger">Cancelar</button>
+                <div class="btn_group" role="group" aria-label="">
+                    <button type="submit" class="btn btn_success">Agregar</button>
+                    <button type="submit" name="accion" value="Cancelar" class="btn btn_danger">Cancelar</button>
                 </div>
             </form>
 
             <br>
 
             <form method="POST">
-                <input type="submit" name="accion" value="Supervisor no fijo" class="btn btn-warning"> 
+                <input type="submit" name="accion" value="Supervisor no fijo" class="btn btn_warning"> 
             </form>
 
             <br>
@@ -152,8 +151,8 @@ switch ($accion) {
 
 
 
-<div class="col-md-7">
-    <table class="table table-bordered tabla-izquierda">
+<div class="inside_form">
+    <table class="table_inside">
         
         <thead>
             <tr>
@@ -179,14 +178,14 @@ switch ($accion) {
                         <input type="hidden" name="slModel" value="<?php echo $lsModelSelec; ?>" />
                         
                         <?php if($inventario["ruta"] != "inventarios_diarios/") {?>
-                        <a class="btn btn-primary" href="<?php echo $inventario["ruta"];?>" download="<?php echo $inventario["nombre"];?>">Descargar</a>
+                        <a class="btn btn_primary" href="<?php echo $inventario["ruta"];?>" download="<?php echo $inventario["nombre"];?>">Descargar</a>
                         <?php } else {?>
                         <p>No Cargó Archivos</p>
                         <?php }?>
 
 
                         <?php if(isset($_COOKIE['usuario']) && $_COOKIE["usuario"] == "Brandon" || $_COOKIE["usuario"] == "Abel" || $_COOKIE["usuario"] == "Shirley" ){ ?>
-                                 <input type="submit" name="accion" value="Borrar" class="btn btn-danger">
+                                 <input type="submit" name="accion" value="Borrar" class="btn btn_danger">
                                  <?php }?>
                         
                     </form>
