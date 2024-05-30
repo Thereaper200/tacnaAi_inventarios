@@ -76,45 +76,42 @@ h2 {
 
 
 .img_container {
+  box-sizing: border-box;
   display: flex;
   background: rgb(255, 255, 255);
-  justify-content: center;
-  align-items: center;
   width: 100%;
-  margin: 0 auto; 
-  flex-wrap: wrap;
-  border: 2px solid red; 
-  border-radius: 5px;
+  height: auto;
   background-color: black;
+  display: inline-block;
+  padding: 10px;
+  text-align: center;
 }
 
 .gifs_inicio {
-  width: 25%;
+  width: 30%;
   height: auto;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
-  max-width: 100%;
   margin: 10px;
-  float: left;
 }
 
-.gifs_inicio:hover {
-  transform: scale(1.3);
-}
 
-/* *================= MAIN Y GRAFICAS INDEX ===================* */
+/* *================= MAIN Y GRAFICAS INDEX.PHP ===================* */
 
 .container_section {
   display: flex;
 }
 
+.grafs_container{
+  width: 100%;
+}
+
 .grafs_navbar {
+  flex: 0 0 10%;
   background-color: red;
-  width: 250px;
-  padding: 20px;
+  padding: 10px;
   color: white;
+  bottom: 116px;
   position: fixed;
-  bottom: 110px;
+  z-index: 1;
 }
 
 .grafs_navbar h2 {
@@ -133,6 +130,7 @@ h2 {
   display: block;
   padding: 10px;
   transition: background-color 0.3s;
+  text-align: center;
 }
 
 .index_contents a:hover {
@@ -144,30 +142,83 @@ h2 {
   padding: 20px;
 }
 
+
 .img_grafs {
-  margin-bottom: 20px;
+  margin-bottom: 350px;
   margin-left: 220px;
 }
 
-.img_grafs img {
-  width: 100%;
+.pencil{
+  margin-bottom: 20px;
 }
 
-.grafs h2 {
+.img_grafs img {
+  width: 85%;
+  height: auto;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  max-width: 100%;
+  margin-bottom: 150px;
+  float: left;
+}
+
+.img_grafs img:hover {
+  transform: scale(1.3);
+}
+
+.title {
   color: black;
+  margin: 20px 0 150px 0;
+  font-size: xx-large;
+  text-align: center;
 }
 
 /* *================= RESPONSIVE DE PAGINA INDEX ===================* */
 
-@media only screen and (min-width: 835px) and (max-width: 1024px) {
+@media (max-width:800px)  {
+  
   .img_container {
-    width: 80%; /* Ajustar el ancho para iPad Pro de 12 pulgadas */
+    width: 95%; /* Ajustar el ancho para iPad Pro de 12 pulgadas */
   }
+
   .footer{
     display: none;
   }
-}
 
+  .grafs_navbar{
+    margin: 0;
+    bottom: 0;
+    padding: 5px;
+
+  }
+
+  .title{
+    margin: 10px 10px 0 0;
+    text-align: center;
+  }
+
+  .img_grafs img{
+    width: 85%;
+    height: auto;
+    float: right;
+    transform: none !important;
+  }
+
+  .grafs{
+    padding: 0;
+    width: 100%;
+    align-items: start;
+  }
+
+  .img_grafs {
+    margin-bottom: 50px;
+    margin-left: 90px;
+  }
+
+  .pencil{
+    margin-bottom: 200px;
+  }
+}
 /* *================= PAGINA ACERCA DE NOSOTROS ===================* */
 
 .display-1{
@@ -278,7 +329,7 @@ h2 {
   margin-top: 10px;
 }
 
-/* P*================= PAGINA INVENTARIOS.PHP ===================**/
+/* *=================== PAGINA INVENTARIOS.PHP ===================* */
 
 .find_bar{
   display: flex;
@@ -377,16 +428,4 @@ h2 {
 
 .info_inv {
   margin-bottom: 5px;
-}
-
-.info_devices a {
-  color: #E74C3C;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease;
-
-  &:hover {
-    color: #C0392B;
-    text-shadow: 0 0 5px rgba(231, 76, 60, 0.5);
-}
 }

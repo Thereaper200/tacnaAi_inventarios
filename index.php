@@ -12,43 +12,34 @@
 </main>
 
 <main class="grafs_container">
-
     <h2 class="title">Gráficas diarias</h2>
-
     <div class="container_section">
 
         <aside class="grafs_navbar">
             <nav class="index_contents">
-                <a href="#adaptaders">Adaptadores</a>
-                <a href="#Wire">Cables</a>
                 <a href="#ipad">iPad's</a>
+                <a href="#adaptaders">Adaptadores</a>
+                <a href="#wire">Cables</a>
                 <a href="#ipencil">iPencil's</a>
             </nav>
         </aside>
 
         <div class="grafs">
-
+            <div class="img_grafs">
+                <img src="admin/graficas/pastel_ipad.php" id="ipad">
+                <img src="admin/graficas/grafica_ipad.php">
+            </div>
             <div class="img_grafs">
                 <img src="admin/graficas/grafica_adaptadores.php" id="adaptaders">
             </div>
-
             <div class="img_grafs">
                 <img src="admin/graficas/grafica_cables.php" id="wire">
             </div>
-
-            <div class="img_grafs">
-                <img src="admin/graficas/grafica_ipad.php" id="ipad">
-                <img src="admin/graficas/pastel_ipad.php">
-            </div>
-
-            <div class="img_grafs">
+            <div class="img_grafs pencil">
                 <img src="admin/graficas/grafica_lapiz.php" id="ipencil">
             </div>
-
         </div>
-
     </div>
-
 </main>
 
 <?php include("template/pie.php"); ?>

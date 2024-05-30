@@ -43,7 +43,6 @@ if (!empty($search)) {
             <p class="info_inv">Facturas: <?php echo $item['facturas']; ?></p>
             <p class="info_inv">Comentarios: <?php echo $item['comentarios']; ?></p>
             <p class="info_inv">Ubicación: <?php echo $item['ubicacion']; ?></p>
-            <a id="moreview" href="#">Ver más</a>
         </div>
     </div>
 <?php } ?>

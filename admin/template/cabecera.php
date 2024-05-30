@@ -28,7 +28,7 @@ error_reporting(E_ALL & ~E_NOTICE);
     <link rel="icon" href="../../img/logos/iconpl.png" type="image/x-icon">
 </head>
 
-<?php $url="http://".$_SERVER["HTTP_HOST"]."/tacnatest";  ?>
+<?php $url="http://".$_SERVER["HTTP_HOST"]."/Github/tacnaAi_Inventarios";  ?>
 <body class="body_navbar">
   <header>
     <section class="cont_navbarinicio">
