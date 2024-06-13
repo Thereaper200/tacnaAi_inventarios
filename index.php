@@ -1,7 +1,7 @@
 <?php include("template/cabecera.php"); ?>
 
 <div class="jumbotron">
-    <h1 class="page_title">Bienvenido a la página de inventario de Tacna AI</h1>
+    <h1 class="title">Bienvenido a la página de inventario de Tacna AI</h1>
     <div class="img_viewer">
         <div class="img_container">
             <img class="gifs_inicio" src="img/colaboradores/colab2.gif" alt="Colaboradores de Tacna">
@@ -12,7 +12,7 @@
 </main>
 
 <main class="grafs_container">
-    <h2 class="title">Gráficas diarias</h2>
+    <h2 class="subtema-1">Gráficas diarias</h2>
     <div class="container_section">
 
         <aside class="grafs_navbar">

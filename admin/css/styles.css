@@ -1,52 +1,33 @@
 *{
-  margin:   0;
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: sans-serif;
 }
-/* body de cabecera */
 
-.body_navbar{
+body{
+  display: block;
   background: #ddd;
+  margin-bottom: 50px;
 }
 
-/* Imagen de perrito en el inicio */
-
-.img_inicio {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  margin-top: 2px;
-  justify-content: center;
-
+.dog{
+  width:100%;
+  display: block;
+  margin: 0 auto;
 }
 
-.body_navbar .dog{
-  width: 50%; /* Ajusta el ancho de las imágenes */
-  height: auto;
-  opacity: 0.8;
-}
-
-/* Barra de navegacion cuando entra el usuario su contraseña en la pagina de inicio */
-
-.navbar_logo{ 
+.navbar_logo{   
   height: 55px;
   margin: 0px 20px; 
   filter: drop-shadow(0px 0px 3px black);
 }
 
-
 .navbar_cabecera{
   max-width: 100%;
   background: linear-gradient(to bottom, red,black);
-  margin-top: 0;
-  text-transform: uppercase;
-  position: sticky;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  height: 75px;
-  border-bottom: 2px solid #b91e27;
+  margin: auto;
+  text-transform: capitalize;
 }
 
 .nav_horizontal{
@@ -58,46 +39,48 @@
 }
 
 .nav_horizontal a{ 
-  display: block; 
-  padding: 15px 20px;
+  padding: 0 10px;
   color: rgb(200, 188, 188);
   text-decoration: none;
-  color:rgb(200, 188, 188);
-  text-decoration: none;
+  cursor: pointer;
 }
 
+.username{
+  text-shadow:0 0 1px goldenrod;
+  text-transform: uppercase;
+
+}
+
+.navbar_logo{ 
+  height: 55px;
+  margin: 0px 20px; 
+  filter: drop-shadow(0px 0px 3px black);
+}
 
 .nav_horizontal p{ 
-  display: block;
   padding: 15px 20px;
   color: rgb(200, 188, 188);
-  text-decoration: none;
 }
 
-.nav_horizontal li:hover::after {
+.nav_horizontal .trans:hover::after {
   content: "";
   display: block;
   background: gray;
-  width: 100%;
   height: 1px;
-  bottom: 0;
-  left: 0;
   transition: all 0.3s ease;
 }
 
 .trans:hover{
-  transform:scale(1.1) ;
+  transform:scale(1.2) ;
 }
 
 .nav_vertical{
-  position: absolute;
+  position: fixed;
   display: none;
   list-style: none;
-  width: 120px;
-  background: black;
-  border-bottom: 2px solid #b91e27;
-  border-left: 2px solid #b91e27;
-  border-right: 2px solid #b91e27;
+  background: linear-gradient(to top, black,red);
+  width: max-content;
+  margin-left: 5px;
 }
 
 .nav_horizontal li:hover .nav_vertical{
@@ -111,14 +94,11 @@
 .nav_vertical li a{
   display: block;
   color: rgb(200, 188, 188);
-  padding: 15px 15px 15px 20px;
   text-decoration: none;
+  text-align: center;
+  font-size: 10px;
+  padding: 15px;
 }
-
-
-
-
-/* Barra de navegacion de antes de prelogearte */
 
 .container-navbarprelog{
     background: rgb(0, 0, 0); 
@@ -135,7 +115,18 @@
   transform: scale(1.3);
 }
 
+li > a{
+  text-shadow: 2px 2px 5px black;
+}
+
 /*formulario*/
+
+.principal_columns{
+  margin: auto;
+}
+.form_container > form:nth-child(1){
+  margin: 0 auto;
+}
 
 .formulario_container {
   display: flex;
@@ -197,45 +188,23 @@
 /* Pie de pagina */
 
 .footer {
+  box-sizing: border-box;
+  display: flex;
   background: #000000;
-  color: #fff; /* Adjusted color for improved contrast */
-  padding: 10px 20px; /* Reduced padding for smaller size */
-  text-align: center;
-  position: fixed; /* Ensures footer stays at bottom */
-  bottom: 0;
   width: 100%;
-  height: 50px; /* Set a fixed height for consistent size */
-}
-
-.footer.sticky { /* Add a new class */
-  position: static; /* Reset position to allow other content to flow */
+  height: auto;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
 }
 
 .footer-content {
-  display: flex;
-  justify-content: space-between; /* Adjust spacing for better layout */
-  align-items: center;
+    border: 1px solid red;
 }
 
 .footer-info {
-  margin-right: 10px; /* Maintain some spacing for responsiveness */
-  display: flex; /* Allow wrapping if content overflows on smaller screens */
-  flex-wrap: wrap; /* Enable content to wrap on small screens */
-}
-
-.copyright {
-  margin: 0; /* Remove margin for cleaner layout */
-  font-size: 0.8rem; /* Adjust font size for smaller screens */
-}
-
-@media only screen and (max-width: 900px) {
-  .footer-content {
-    flex-direction: column; /* Stack items vertically on small screens */
-  }
-
-  .footer-info {
-    margin: 0 10px 10px; /* Adjust margins for responsiveness */
-  }
+  text-align: center;
+  color: #f1f1f1;
 }
 
 /* Estilos de columna izquierda (contenedor de formulario) */
@@ -244,7 +213,7 @@
   flex: 1;
   background: rgba(255, 255, 255, 0.9);
   border: 1px solid #ddd;
-  padding: 20px;
+  padding: 10px;
 }
 
 .form_title {
@@ -258,8 +227,13 @@
   gap: 10px;
 }
 
+.form_input{
+  display: flex;
+  justify-content: flex-end;
+}
 .form_boxes {
   display: flex;
+  margin: 10px;
 }
 
 .form_boxes label {
@@ -271,6 +245,7 @@
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 3px;
+  margin-right: 10px;
 }
 
 .input_button:hover {
@@ -286,7 +261,6 @@ select.form_boxes {
 
 .btn_group {
   display: flex;
-  justify-content: center;
 }
 
 .btn {
@@ -294,6 +268,14 @@ select.form_boxes {
   border: none;
   border-radius: 3px;
   cursor: pointer;
+  margin: 5px;
+  text-shadow: 0 2px 2px black;
+}
+
+.btn_export{
+  background: #eae6d2;
+  margin: 0 0 20px 20px;
+  border: 1px solid #000000;
 }
 
 .btn_success {
@@ -331,78 +313,49 @@ select.form_boxes[name="slUbic"] {
   margin: 5px;
 }
 
-/* Estilos de la columna derecha (actualmente vacía; agregue estilos según sea necesario) */
-/*  Estilos de columna derecha aquí */
+div.form_boxes:nth-child(7) > label:nth-child(1){
+  margin: auto;
+}
 
-/* Estilos de la barra de búsqueda */
+.form_boxess > select:nth-child(2){
+  margin-left: 60px;
+  padding: 3px;
+}
+
 .busqueda {
   padding: 5px;
   border: 1px solid #ddd;
   border-radius: 3px;
   width: calc(100% - 80px);
-  margin-right: 10px;
+  margin: auto;
 }
 
 .busqueda:hover {
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
 }
 
-/* Estilos responsivos */
-@media (max-width: 768px) {
-  .principal_columns {
-    flex-direction: column;
-  }
-
-  .head_form {
-    flex: 1; 
-  }
-
-  .form_boxes {
-    flex-direction: column; 
-  }
-
-  .form_boxes label {
-    margin-bottom: 5px;
-  }
-
-  .btn-group {
-    flex-direction: column; 
-  }
-
-  .btn {
-    margin-bottom: 5px;
-  }
-
-  .busqueda {
-    width: 100%;
-  }
-}
-
-
 .inside_form {
   background: rgba(255, 255, 255, 0.9);
   border: 1px solid #ddd;
-  margin: 20px auto;
-  padding: 20px;
+  margin: 0 auto;
+  margin-bottom: 50px;
 }
 
 /* Table Styles */
 
 .table_inside {
   width: 100%;
-  border-collapse: collapse;
-
+  height: auto;
 } 
 
 .table_insideuser {
   width: 25%;
-  border-collapse: collapse;
   margin: 0 auto;
 } 
 
-.table_inside th,
+.table_inside  th,
 .table_inside td {
-  padding: 8px;
+  padding: 20px;
   border: 1px solid #ddd;
   text-align: left;
 }
@@ -411,12 +364,13 @@ select.form_boxes[name="slUbic"] {
   background: #f1f1f1;
 }
 
+
 /* Pagination Styles */
 .pagination {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
-  flex-wrap: wrap; /* Wrap pagination items if they overflow */
+  margin: 0;
+  padding: 0;
 }
 
 .pagination .btn {
@@ -439,26 +393,23 @@ select.form_boxes[name="slUbic"] {
   background: #ddd;
 }
 
-/* Responsive Styles */
-@media (max-width: 1000px) {
-  .inside_form {
-    /* Adjust padding for smaller screens */
-    padding: 10px;
-  }
 
-  .table_inside {
-    /* Make table more readable on narrow screens */
-    font-size: 0.8em;
+@media (max-width: 955px){
+  .inside_form > table{
+    width: 99vw;
+    height: auto;
+    font-size: small;
+    margin:0 auto;
+    padding: 0;
   }
+}
 
-  .table_inside th,
-  .table_inside td {
-    /* Reduce padding for better fit */
-    padding: 5px;
-  }
-
-  .pagination {
-    /* Wrap pagination buttons on smaller screens */
-    flex-wrap: wrap;
+@media (max-width: 600px){
+  .inside_form > table{
+    width: 70vw;
+    height: auto;
+    font-size: 0.1rem;
+    margin:0 auto;
+    padding: 0;
   }
 }
