@@ -60,19 +60,23 @@ ob_end_flush(); // Enviar el buffer de salida
         </nav>
 
 <section class="formulario_container">
-  <div>
+  <div class="box">
+    <span class="borderline"></span>
     <form class="formulario" method="POST">
-      <div>
-        <img src="../img/logos/iconpl.png" class="icon_form">
-        <label for="usuario">Usuario: </label>
-        <input class="inp_user" type="text" class="form-control" id="usuario" name="usuario" placeholder="Ingresa tu usuario" autocomplete="off">
-        <small id="emailHelp">Nunca compartas tu contraseña con nadie</small>
-      </div>
-      <div>
-        <label for="clave">Contraseña: </label>
-        <input class="inp_password" type="password" name="clave" id="clave" placeholder="Ingresa tu contraseña" autocomplete="off">
-      </div>
-      <button class="btn_submit" type="submit">Ingresar</button>
+    <!-- <h2>Iniciar sesión</h2> -->
+    
+    <img src="../img/logos/iconpl.png" class="icon_form">
+            <div class="inputBox">
+                <input name="usuario" id="usuario" type="text" required="required">
+                <span>Usuario</span>
+                <i></i>
+            </div>
+            <div class="inputBox">
+                <input name="clave" id="clave" type="password" required="required">
+                <span>Contraseña</span>
+                <i></i>
+            </div>
+            <input type="submit" value="Iniciar sesión">
     </form>
   </div>
 </section>
