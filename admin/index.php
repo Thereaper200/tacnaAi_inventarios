@@ -69,12 +69,10 @@ ob_end_flush(); // Enviar el buffer de salida
             <div class="inputBox">
                 <input name="usuario" id="usuario" type="text" required="required">
                 <span>Usuario</span>
-                <i></i>
             </div>
             <div class="inputBox">
                 <input name="clave" id="clave" type="password" required="required">
                 <span>Contraseña</span>
-                <i></i>
             </div>
             <input type="submit" value="Iniciar sesión">
     </form>
