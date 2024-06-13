@@ -12,9 +12,10 @@ body{
 }
 
 .dog{
-  width:100%;
   display: block;
   margin: 0 auto;
+  width:100vw;
+  height: 95vh;
 }
 
 .navbar_logo{   
@@ -24,7 +25,8 @@ body{
 }
 
 .navbar_cabecera{
-  max-width: 100%;
+  width: 100%;
+  position: inherit;
   background: linear-gradient(to bottom, red,black);
   margin: auto;
   text-transform: capitalize;
@@ -47,8 +49,7 @@ body{
 
 .username{
   text-shadow:0 0 1px goldenrod;
-  text-transform: uppercase;
-
+  text-transform: capitalize;
 }
 
 .navbar_logo{ 
@@ -75,7 +76,7 @@ body{
 }
 
 .nav_vertical{
-  position: fixed;
+  position: absolute;
   display: none;
   list-style: none;
   background: linear-gradient(to top, black,red);
@@ -123,6 +124,10 @@ li > a{
 
 .principal_columns{
   margin: auto;
+  align-content: center;
+}
+div.principal_columns:nth-child(4){
+  margin: 20px;
 }
 .form_container > form:nth-child(1){
   margin: 0 auto;
@@ -216,6 +221,7 @@ li > a{
   background: rgba(255, 255, 255, 0.9);
   border: 1px solid #ddd;
   padding: 10px;
+  margin: 20px;
 }
 
 .form_title {
@@ -303,6 +309,7 @@ select.form_boxes {
 .btn_primary {
   background: #a4ada3;
   color: white;
+  padding: 5px;
 }
 
 .btn:hover {
@@ -313,10 +320,6 @@ select.form_boxes {
 select.form_boxes[name="slUbic"] {
   width: 50%;
   margin: 5px;
-}
-
-div.form_boxes:nth-child(7) > label:nth-child(1){
-  margin: auto;
 }
 
 .form_boxess > select:nth-child(2){
@@ -339,8 +342,8 @@ div.form_boxes:nth-child(7) > label:nth-child(1){
 .inside_form {
   background: rgba(255, 255, 255, 0.9);
   border: 1px solid #ddd;
-  margin: 0 auto;
-  margin-bottom: 50px;
+  margin: 20px;
+  padding: 10px;
 }
 
 /* Table Styles */
@@ -357,7 +360,7 @@ div.form_boxes:nth-child(7) > label:nth-child(1){
 
 .table_inside  th,
 .table_inside td {
-  padding: 20px;
+  padding: 5px;
   border: 1px solid #ddd;
   text-align: left;
 }
@@ -365,7 +368,6 @@ div.form_boxes:nth-child(7) > label:nth-child(1){
 .table_inside thead {
   background: #f1f1f1;
 }
-
 
 /* Pagination Styles */
 .pagination {
@@ -398,25 +400,72 @@ div.form_boxes:nth-child(7) > label:nth-child(1){
 
 @media (max-width: 955px){
   .inside_form > table{
-    width: 99vw;
+    width: 80%;
     height: auto;
     font-size: small;
     margin:0 auto;
     padding: 0;
   }
+  .username{
+    font-size: small;
+  }
+  .navbar_logo{
+    width: 40px;
+    height: auto;
+  }
+  .navbar_cabecera{
+    font-size: 0.8rem;
+
+  }
 }
 
 @media (max-width: 600px){
   .inside_form > table{
-    width: 70vw;
+    width: 50%;
     height: auto;
-    font-size: 0.1rem;
+    font-size: 0.5rem;
     margin:0 auto;
     padding: 0;
   }
+  .username{
+    font-size: 0.8rem;
+  }
+  .navbar_logo{
+    width: 30px;
+    height: auto;
+  }
+  .navbar_cabecera{
+    width: 100%;
+    position: inherit;
+    background: linear-gradient(to bottom, red,black);
+    margin: auto;
+    font-size: 0.5rem;
+    text-transform: capitalize;
+  }
+  
 }
 
-=======
+@media (max-width: 600px){
+  .inside_form > table{
+    width: 30%;
+    height: auto;
+    font-size: 0.3rem;
+    margin:0 auto;
+    padding: 0;
+  }
+  .navbar_logo{
+    width: 20px;
+    height: auto;
+  }
+  .navbar_cabecera{
+    width: 100%;
+    position: inherit;
+    background: linear-gradient(to bottom, red,black);
+    margin: auto;
+    font-size: 0.3rem;
+    text-transform: capitalize;
+  }
+}
 
 /* Seccion de estilos de caja de login */
 
@@ -606,7 +655,7 @@ div.form_boxes:nth-child(7) > label:nth-child(1){
     border-radius: 4px;
     font-weight: 600;
     width: 100px;
-    margin-top: 10px;
+    margin: 0 auto;
 }
 
 .box form input[type="submit"]:active

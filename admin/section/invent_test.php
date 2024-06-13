@@ -105,10 +105,6 @@ switch ($accion) {
                     <label for="txtComent">Comentarios:</label>
                     <input type="input" class="input_button"  name="txtComent" id="txtComent" placeholder="Comentarios" autocomplete="off">
                 </div>
-
-               
-                
-                <br>
         
                 
                 <label for="slUbic">Ubicacion:</label>
@@ -127,24 +123,15 @@ switch ($accion) {
                     <option value="Cabina"<?php if ($lsUbicSelec == 'Cabina') echo ' selected'; ?>>Cabina</option>
                     <option value="Administrativo"<?php if ($lsUbicSelec == 'Administrativo') echo ' selected'; ?>>Administrativo</option>
                 </select>
-                
-
-                <br>
-                
                 <div class="btn_group" role="group" aria-label="">
                     <button type="submit" class="btn btn_success">Agregar</button>
                     <button type="submit" name="accion" value="Cancelar" class="btn btn_danger">Cancelar</button>
                 </div>
             </form>
 
-            <br>
-
             <form method="POST">
                 <input type="submit" name="accion" value="Supervisor no fijo" class="btn btn_warning"> 
             </form>
-
-            <br>
-
         </div>
     </div>
 </div>
