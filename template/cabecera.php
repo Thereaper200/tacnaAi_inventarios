@@ -12,6 +12,7 @@ error_reporting(E_ALL & ~E_NOTICE);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="logo" href="img/logos/iconpl.png">
+    <meta http-equiv="pragma" content="no-cache">
     <title>Portal de inventario</title>
     <!--Hoja de estilo de la barra de navegación-->
     <link rel="stylesheet"  type= "text/css" href="css/style.css">

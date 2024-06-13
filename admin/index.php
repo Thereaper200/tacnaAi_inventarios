@@ -46,6 +46,7 @@ ob_end_flush(); // Enviar el buffer de salida
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="shortcut icon" type="logo" href="../img/logos/iconpl.png">
     <link rel="stylesheet"  type= "text/css" href="../admin/css/styles.css">
+    <meta http-equiv="pragma" content="no-cache">
 
   </head>
 
@@ -83,13 +84,10 @@ ob_end_flush(); // Enviar el buffer de salida
 </body>
 
 <footer class="footer">
-        <div class="footer-content">
             <div class="footer-info">
                 <p>Dirección: Águila Coronada 19491, Cerro Colorado, 22215 Tijuana, B.C.</p>
                 <p>Teléfono: 6646811400</p>
                 <a href="https://tacna.net/" target="_blank">Visita Tacna</a>
             </div>
-        </div>
-        <p class="copyright">© 2024 Todos los derechos reservados</p>
     </footer>
 </html>

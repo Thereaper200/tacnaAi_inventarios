@@ -16,6 +16,7 @@
 .navbar_logo{
   height: 55px;
   margin: 0px 20px;
+  filter: drop-shadow(1px 1px 3px #4d4b4b);
 }
 
 .navbar_logo:hover{
@@ -34,6 +35,7 @@
 .nav_link{
   margin-left: 55px;
   list-style: none;
+  cursor: pointer;
 }   
 
 .nav_link:hover {
@@ -60,14 +62,11 @@
 .nav_link:hover a::after{
   opacity: 1;
 }
+li.nav_link> a{
+  text-shadow: 0 0 1px white;
+}
 
 /* *================= PAGINA INDEX ===================* */
-
-.page_title{
-  text-align: center;
-  color: red;
-  font-size: 2rem;
-}
 
 h2 {
   text-align: center;
@@ -100,16 +99,9 @@ h2 {
   display: flex;
 }
 
-.grafs_container{
-  width: 100%;
-}
-
 .grafs_navbar {
-  flex: 0 0 10%;
   background-color: red;
-  padding: 10px;
   color: white;
-  bottom: 116px;
   position: fixed;
   z-index: 1;
 }
@@ -128,9 +120,10 @@ h2 {
   text-decoration: none;
   color: white;
   display: block;
-  padding: 10px;
   transition: background-color 0.3s;
   text-align: center;
+  margin: 10px;
+  padding: 5px;
 }
 
 .index_contents a:hover {
@@ -142,15 +135,11 @@ h2 {
   padding: 20px;
 }
 
-
 .img_grafs {
-  margin-bottom: 350px;
-  margin-left: 220px;
+  margin-bottom: 150px;
+  margin-left: 150px;
 }
 
-.pencil{
-  margin-bottom: 20px;
-}
 
 .img_grafs img {
   width: 85%;
@@ -168,14 +157,14 @@ h2 {
 
 .title {
   color: black;
-  margin: 20px 0 150px 0;
+  margin: 10px 0;
   font-size: xx-large;
   text-align: center;
 }
 
 /* *================= RESPONSIVE DE PAGINA INDEX ===================* */
 
-@media (max-width:800px)  {
+@media (max-width:650px)  {
   
   .img_container {
     width: 95%; /* Ajustar el ancho para iPad Pro de 12 pulgadas */
@@ -214,34 +203,29 @@ h2 {
     margin-bottom: 50px;
     margin-left: 90px;
   }
-
-  .pencil{
-    margin-bottom: 200px;
-  }
 }
 /* *================= PAGINA ACERCA DE NOSOTROS ===================* */
 
-.display-1{
-    font-size: 4rem; 
+.title{
+    font-size: 4rem;
     font-family: 'Impact', sans-serif;
     margin-bottom: 20px;
-    color: #333; 
+    color: #333;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     border: 2px solid #ccc;
 }
 
 .flag{
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 .subtema-1{
-    font-family: 'Raleway', sans-serif;
+    font-family:sans-serif;
     font-size: 2.5rem;
     font-weight: 500;
     color: #333;
     text-align: center;
-    margin-top: 30px;
-    margin-bottom: 20px;
+    margin: 10px;
 }
 
 .cont_adn {
@@ -297,36 +281,48 @@ h2 {
 }
 
 .img_lab {
-  width: 100%;
+  width: 80%;
   border-radius: 5px;
-  margin-bottom: 10px;
+  display: block;
+  margin: auto;
 }
 
+.map{
+  width: 80%;
+  border-radius: 5px;
+  display: block;
+  margin: auto;
+}
+
+ofr
 /* *================= FOOTER ===================* */
-
-.footer {
-  margin-top: auto;
-  background-color: #000000;
-  color: #fff; 
-  padding: 20px;
-  text-align: center;
-  position: sticky;
-  bottom: 0;
-  width: 100%;
-}
 
 .footer-content {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
+.footer {
+  background: #000000;
+  color: #fff;
+  padding: 10px 20px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+}
+
 .footer-info {
-  margin-right: 0;
+  margin-right: 10px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .copyright {
-  margin-top: 10px;
+  margin: 0;
+  font-size: 0.8rem;
 }
 
 /* *=================== PAGINA INVENTARIOS.PHP ===================* */
@@ -429,3 +425,4 @@ h2 {
 .info_inv {
   margin-bottom: 5px;
 }
+

@@ -16,7 +16,7 @@ $accion = (isset($_POST["accion"])) ? $_POST["accion"] : "";
 
 include("../config/db.php");
 
-$resultados_por_pagina = 10;
+$resultados_por_pagina = 75;
 $pagina_actual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
 $offset = ($pagina_actual - 1) * $resultados_por_pagina;
 

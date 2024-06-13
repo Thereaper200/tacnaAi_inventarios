@@ -23,16 +23,12 @@ $listainventarios = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 
 <div class="inside_form">
     <table class="table_inside">
-
-    <div>
-        <form method="POST" enctype="multipart/form-data">
-            <input type="date" name="txtFecha" id="txtFecha">
-            <input type="submit" name="accion" value="Buscar" class="btn btn_primary">
-        </form>
-    </div>
-
-    <br>
-        
+        <div>
+            <form method="POST" enctype="multipart/form-data">
+                <input type="date" name="txtFecha" id="txtFecha">
+                <input type="submit" name="accion" value="Buscar" class="btn btn_primary">
+            </form>
+        </div>
         <thead>
             <tr>
                 <th>Oficina</th>

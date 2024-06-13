@@ -94,7 +94,7 @@ $listaUsuarios = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 
 
 <div class="inside_form">
-    <table class="table_insideuser">
+    <table class="table_insideuser table_inside">
         
         <thead>
             <tr>
@@ -142,3 +142,5 @@ $listaUsuarios = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
         </tbody>
     </table>
 </div>
+
+<?php include '../template/pie.php';?>

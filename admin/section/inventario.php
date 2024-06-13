@@ -144,7 +144,6 @@ foreach ($listaCombinada as $dispositivo) {
 <div class="principal_columns">
     <div class="head_form">
         <h2 class="form_title">Reporte</h2>
-
         <div class="form_container">
             <form method="POST" enctype="multipart/form-data">
                 
@@ -160,33 +159,29 @@ foreach ($listaCombinada as $dispositivo) {
                 <div class="form_boxes">
                     <label for="txtCom">Comentarios:</label>
                     <input type="text" class="input_button" value="<?php echo $txtCom; ?>" name="txtCom" id="txtCom" placeholder="Modelo obsoleto." pattern="[a-z, A-Z, 0-9,[], ()]{0,}" autocomplete="off">
-
+                </div>
                 <div class="form_boxes">
                     <label for="slModel">Modelo:</label>
                     <input type="text" class="input_button" value="<?php echo $lsModel; ?>" name="slModel" id="slModel" placeholder="Modelo" pattern="[a-zA-Z0-9]{0,32}" autocomplete="off">
                 </div>
-                    <br>
+                <div class="form_boxes">
                 <label for="slUbic">Ubicacion:</label>
-                <select class="form_boxes" name="slUbic">
-                    <option selected disabled>-- Seleccione la ubicación --</option>
-                    <option value="Oficina 1"<?php if ($lsUbicSelec == 'Oficina 1') echo ' selected'; ?>>Oficina 1</option>
-                    <option value="Oficina 2"<?php if ($lsUbicSelec == 'Oficina 2') echo ' selected'; ?>>Oficina 2</option>
-                    <option value="Oficina 3"<?php if ($lsUbicSelec == 'Oficina 3') echo ' selected'; ?>>Oficina 3</option>
-                    <option value="Oficina 4"<?php if ($lsUbicSelec == 'Oficina 4') echo ' selected'; ?>>Oficina 4</option>
-                    <option value="Oficina 5"<?php if ($lsUbicSelec == 'Oficina 5') echo ' selected'; ?>>Oficina 5</option>
-                    <option value="AgTech"<?php if ($lsUbicSelec == 'AgTech') echo ' selected'; ?>>AgTech</option>
-                    <option value="Phoenix"<?php if ($lsUbicSelec == 'Phoenix') echo ' selected'; ?>>Phoenix</option>
-                    <option value="QC"<?php if ($lsUbicSelec == 'QC') echo ' selected'; ?>>QC</option>
-                    <option value="Alpha"<?php if ($lsUbicSelec == 'Alpha') echo ' selected'; ?>>Alpha</option>
-                    <option value="Azkaban"<?php if ($lsUbicSelec == 'Azkaban') echo ' selected'; ?>>Azkaban</option>
-                    <option value="Cabina"<?php if ($lsUbicSelec == 'Cabina') echo ' selected'; ?>>Cabina</option>
-                    <option value="Administrativo"<?php if ($lsUbicSelec == 'Administrativo') echo ' selected'; ?>>Administrativo</option>
-                </select>
-
-                <br>
-
-
-                <br>
+                    <select  name="slUbic">
+                        <option selected disabled>-- Seleccione la ubicación --</option>
+                        <option value="Oficina 1"<?php if ($lsUbicSelec == 'Oficina 1') echo ' selected'; ?>>Oficina 1</option>
+                        <option value="Oficina 2"<?php if ($lsUbicSelec == 'Oficina 2') echo ' selected'; ?>>Oficina 2</option>
+                        <option value="Oficina 3"<?php if ($lsUbicSelec == 'Oficina 3') echo ' selected'; ?>>Oficina 3</option>
+                        <option value="Oficina 4"<?php if ($lsUbicSelec == 'Oficina 4') echo ' selected'; ?>>Oficina 4</option>
+                        <option value="Oficina 5"<?php if ($lsUbicSelec == 'Oficina 5') echo ' selected'; ?>>Oficina 5</option>
+                        <option value="AgTech"<?php if ($lsUbicSelec == 'AgTech') echo ' selected'; ?>>AgTech</option>
+                        <option value="Phoenix"<?php if ($lsUbicSelec == 'Phoenix') echo ' selected'; ?>>Phoenix</option>
+                        <option value="QC"<?php if ($lsUbicSelec == 'QC') echo ' selected'; ?>>QC</option>
+                        <option value="Alpha"<?php if ($lsUbicSelec == 'Alpha') echo ' selected'; ?>>Alpha</option>
+                        <option value="Azkaban"<?php if ($lsUbicSelec == 'Azkaban') echo ' selected'; ?>>Azkaban</option>
+                        <option value="Cabina"<?php if ($lsUbicSelec == 'Cabina') echo ' selected'; ?>>Cabina</option>
+                        <option value="Administrativo"<?php if ($lsUbicSelec == 'Administrativo') echo ' selected'; ?>>Administrativo</option>
+                    </select>
+                </div>
                 
                 <div class="btn_group" role="group" aria-label="">
                     <button type="submit" name="accion" value="Agregar" class="btn btn_success">Agregar</button>
@@ -198,7 +193,6 @@ foreach ($listaCombinada as $dispositivo) {
                 </div>
 
                 <div class="form_boxes">
-                    <br>
                     <label for="txtBus">Búsqueda:</label>
                     <input type="text" class="busqueda" value="<?php echo $txtBus; ?>" name="txtBus" id="txtBus" placeholder="Búsqueda" autocomplete="off">
                     <input type="submit" name="accion" value="Buscar" class="btn btn_submit">
@@ -264,10 +258,6 @@ foreach ($listaCombinada as $dispositivo) {
                             </svg>
                         </button>
                         <?php }?>
-                            <br>
-                            <br>
-                        <input 
-                        class="form_check_input" type = "checkbox" name = "outofservice">
 
                     </form>
                 </td>
@@ -285,14 +275,14 @@ foreach ($listaCombinada as $dispositivo) {
                 $resultado = $sentenciaSQL->fetch(PDO::FETCH_ASSOC);
         
             } catch (PDOException $e) {
-                // echo "Error: " . $e->getMessage();
+                echo "Error: " . $e->getMessage();
             }
         
             
         
         ?>
         
-        <div class="pagination">
+       <div class="pagination">
             <?php
             $total_resultados = $resultado['total_filas'] /* Obtén el total de resultados de tu base de datos */;
             $total_paginas = ceil($total_resultados / $resultados_por_pagina);
@@ -302,40 +292,39 @@ foreach ($listaCombinada as $dispositivo) {
             }
             ?>
         </div>
-        <form action="csv.php" method="POST" enctype="multipart/form-data">
-            <input type="submit" value="Exportar" name=csv class='btn border margin-left padding-left'></a>
+        <form action="csv.php" method="POST" enctype="multipart/form-data" clases="form_input">
+            <input type="submit" value="Exportar" name=csv class="btn btn_export"></a>
         </form>
         </div>
-
-<div class="principal_columns">
-    <table class="table_inside">
-        <thead>
-            <tr>
-                <th>SN</th>
-                <th>Factura</th>
-                <th>Comentarios</th>
-                <th>Ubicacion</th>
-            </tr>
-        </thead>
-        <tbody>
-        <?php foreach($resultadosBusqueda as $encontrado): ?>
-
-            <tr>
-                <td><?php echo $encontrado["sn"]; ?></td>
-                <td><?php echo $encontrado["facturas"]; ?></td>
-                <td><?php echo $encontrado["comentarios"]; ?></td>
-                <td><?php echo $encontrado["ubicacion"]; ?></td>
-                <td>
-                    <form method="POST">
-                        <input type="hidden" name="txtSN" value="<?php echo $encontrado["sn"]; ?>" />
-                        <input type="submit" name="accion" value="Seleccionar" class="btn btn_primary">
-                        <input type="submit" name="accion" value="Borrar" class="btn btn_danger">
-                    </form>
-                </td>
-            </tr>
-        <?php endforeach; ?>
-        </tbody>
-    </table>
-</div>
+        <div class="principal_columns">
+            <table class="table_inside">
+                <thead>
+                    <tr>
+                        <th>SN</th>
+                        <th>Factura</th>
+                        <th>Comentarios</th>
+                        <th>Ubicacion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php foreach($resultadosBusqueda as $encontrado): ?>
+                
+                    <tr>
+                        <td><?php echo $encontrado["sn"]; ?></td>
+                        <td><?php echo $encontrado["facturas"]; ?></td>
+                        <td><?php echo $encontrado["comentarios"]; ?></td>
+                        <td><?php echo $encontrado["ubicacion"]; ?></td>
+                        <td>
+                            <form method="POST">
+                                <input type="hidden" name="txtSN" value="<?php echo $encontrado["sn"]; ?>" />
+                                <input type="submit" name="accion" value="Seleccionar" class="btn btn_primary">
+                                <input type="submit" name="accion" value="Borrar" class="btn btn_danger">
+                            </form>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
 
 <?php include("../template/pie.php"); ?>
