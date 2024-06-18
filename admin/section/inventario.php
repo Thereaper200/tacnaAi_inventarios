@@ -203,6 +203,37 @@ foreach ($listaCombinada as $dispositivo) {
     </div>
 </div>
 
+<div class="inside_form">
+    <table class="table_inside">
+        <thead>
+            <tr>
+                <th>SN</th>
+                <th>Factura</th>
+                <th>Comentarios</th>
+                <th>Ubicacion</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php foreach($resultadosBusqueda as $encontrado): ?>
+        
+            <tr>
+                <td><?php echo $encontrado["sn"]; ?></td>
+                <td><?php echo $encontrado["facturas"]; ?></td>
+                <td><?php echo $encontrado["comentarios"]; ?></td>
+                <td><?php echo $encontrado["ubicacion"]; ?></td>
+                <td>
+                    <form method="POST">
+                        <input type="hidden" name="txtSN" value="<?php echo $encontrado["sn"]; ?>" />
+                        <input type="submit" name="accion" value="Seleccionar" class="btn btn_primary btn_busqueda">
+                        <input type="submit" name="accion" value="Borrar" class="btn btn_danger ">
+                    </form>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
 
 <div class="inside_form">
     <table class="table_inside">
@@ -296,35 +327,7 @@ foreach ($listaCombinada as $dispositivo) {
             <input type="submit" value="Exportar" name=csv class="btn btn_export"></a>
         </form>
         </div>
-        <div class="principal_columns">
-            <table class="table_inside">
-                <thead>
-                    <tr>
-                        <th>SN</th>
-                        <th>Factura</th>
-                        <th>Comentarios</th>
-                        <th>Ubicacion</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <?php foreach($resultadosBusqueda as $encontrado): ?>
-                
-                    <tr>
-                        <td><?php echo $encontrado["sn"]; ?></td>
-                        <td><?php echo $encontrado["facturas"]; ?></td>
-                        <td><?php echo $encontrado["comentarios"]; ?></td>
-                        <td><?php echo $encontrado["ubicacion"]; ?></td>
-                        <td>
-                            <form method="POST">
-                                <input type="hidden" name="txtSN" value="<?php echo $encontrado["sn"]; ?>" />
-                                <input type="submit" name="accion" value="Seleccionar" class="btn btn_primary">
-                                <input type="submit" name="accion" value="Borrar" class="btn btn_danger">
-                            </form>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
+
+        <script src="js/busqueda_inventario.js"></script>
 
 <?php include("../template/pie.php"); ?>
