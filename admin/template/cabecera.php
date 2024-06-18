@@ -42,13 +42,14 @@ error_reporting(E_ALL & ~E_NOTICE);
 
       <div id="links_nav">
         <ul class="nav_horizontal">
-          <li class="trans"><a href="<?php echo $url; ?>/admin/section/inventario.php">Reporte</a></li>
+          <li class="trans"><a href="<?php echo $url; ?>/admin/section/reporte.php">Reportes</a></li>
           <li class="dropdown">
             <a>Registro</a>
             <ul class="nav_vertical">
               <li><a href="<?php echo $url; ?>/admin/section/tablas.php">Tablas</a></li>
               <li><a href="<?php echo $url; ?>/admin/section/historial.php">Historial</a></li>
-              <li><a href="<?php echo $url; ?>/admin/section/invent_test.php">Inventario</a></li>
+              <li><a href="<?php echo $url; ?>/admin/section/inventario.php">Inventario</a></li>
+              <li class="trans"><a href="<?php echo $url; ?>/admin/section/ollivander_sup.php">Ollivander's</a></li>
             </ul>
           </li>
           <li class="trans"><a href="<?php echo $url; ?>/admin/section/pedidos.php">Pedidos</a></li>
