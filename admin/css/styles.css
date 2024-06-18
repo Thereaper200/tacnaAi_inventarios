@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: sans-serif;
+  font-size: 20px;
 }
 
 body{
@@ -27,9 +28,12 @@ body{
 .navbar_cabecera{
   width: 100%;
   position: inherit;
-  background: linear-gradient(to bottom, red,black);
+  background: linear-gradient(to bottom, red, black);
   margin: auto;
   text-transform: capitalize;
+  display: flex; 
+  justify-content: space-between;
+  align-items: center;
 }
 
 .nav_horizontal{
@@ -38,6 +42,7 @@ body{
   justify-content: center;
   align-items: center;
   z-index: 1;
+  height: 45px;
 }
 
 .nav_horizontal a{ 
@@ -50,12 +55,6 @@ body{
 .username{
   text-shadow:0 0 1px goldenrod;
   text-transform: capitalize;
-}
-
-.navbar_logo{ 
-  height: 55px;
-  margin: 0px 20px; 
-  filter: drop-shadow(0px 0px 3px black);
 }
 
 .nav_horizontal p{ 
@@ -75,12 +74,11 @@ body{
   transform:scale(1.2) ;
 }
 
-.nav_vertical{
+.nav_vertical {
   position: absolute;
   display: none;
   list-style: none;
   background: linear-gradient(to top, black,red);
-  width: max-content;
   margin-left: 5px;
 }
 
@@ -97,14 +95,14 @@ body{
   color: rgb(200, 188, 188);
   text-decoration: none;
   text-align: center;
-  font-size: 10px;
-  padding: 15px;
+  font-size: 15px;
+  padding: 10px;
 }
 
 .container-navbarprelog{
-    background: rgb(0, 0, 0); 
-    display: flex; 
-    justify-content: center; 
+  background: rgb(0, 0, 0); 
+  display: flex; 
+  justify-content: center; 
 }
 
 .navbar_logoprelog{
@@ -118,6 +116,44 @@ body{
 
 li > a{
   text-shadow: 2px 2px 5px black;
+}
+
+.menu_vertical {
+  color: rgb(200, 188, 188);
+  padding: 10px;
+  position: relative;
+}
+
+.menu_vertical a {
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+.menu_vertical li a {
+  font-size: 14px;
+}
+
+.menu_vertical ul {
+  list-style: none;
+  padding: 0;
+  display: none;
+  position: absolute;  
+  background: linear-gradient(to top, black,red)  
+}
+
+.menu_vertical ul li {
+  padding: 10px;
+}
+
+.menu_vertical ul li:hover {
+  transform: scale(1.1);
+  background-color: black;
+}
+
+.menu_vertical:hover ul {
+  display: block;
 }
 
 /*formulario*/
@@ -192,6 +228,10 @@ div.principal_columns:nth-child(4){
   margin: 5px 5px 15px 5px;
 }
 
+.table_inside > tbody > tr> td {
+  padding: 15px;
+}
+
 /* Pie de pagina */
 
 .footer {
@@ -212,6 +252,10 @@ div.principal_columns:nth-child(4){
 .footer-info {
   text-align: center;
   color: #f1f1f1;
+  height: 50px;
+}
+.footer-info > p {
+  font-size: 0.7rem;
 }
 
 /* Estilos de columna izquierda (contenedor de formulario) */
@@ -245,15 +289,14 @@ div.principal_columns:nth-child(4){
 }
 
 .form_boxes label {
-  width: 120px;
-  margin-right: 10px;
+  width: 150px;
+
 }
 
 .input_button {
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 3px;
-  margin-right: 10px;
 }
 
 .input_button:hover {
@@ -272,7 +315,7 @@ select.form_boxes {
 }
 
 .btn {
-  padding: 10px 20px;
+  padding: 10px;
   border: none;
   border-radius: 3px;
   cursor: pointer;
@@ -309,7 +352,6 @@ select.form_boxes {
 .btn_primary {
   background: #a4ada3;
   color: white;
-  padding: 5px;
 }
 
 .btn:hover {
@@ -358,11 +400,12 @@ select.form_boxes[name="slUbic"] {
   margin: 0 auto;
 } 
 
-.table_inside  th,
+.table_inside th,
 .table_inside td {
-  padding: 5px;
+  padding: 2px;
   border: 1px solid #ddd;
-  text-align: left;
+  text-align: center;
+  font-size: 15px;
 }
 
 .table_inside thead {
@@ -397,29 +440,27 @@ select.form_boxes[name="slUbic"] {
   background: #ddd;
 }
 
-
-@media (max-width: 955px){
+@media (max-width: 1200px){
   .inside_form > table{
-    width: 80%;
+    
     height: auto;
     font-size: small;
     margin:0 auto;
     padding: 0;
+    margin-bottom: 20px;
   }
   .username{
-    font-size: small;
+    font-size: 1.1rem;
   }
   .navbar_logo{
-    width: 40px;
-    height: auto;
+    width: 80px;
   }
   .navbar_cabecera{
-    font-size: 0.8rem;
-
+    font-size: 1.2rem;
   }
 }
 
-@media (max-width: 600px){
+@media (max-width: 700px){
   .inside_form > table{
     width: 50%;
     height: auto;
@@ -431,26 +472,22 @@ select.form_boxes[name="slUbic"] {
     font-size: 0.8rem;
   }
   .navbar_logo{
-    width: 30px;
+    width: 80px;
     height: auto;
   }
   .navbar_cabecera{
     width: 100%;
-    position: inherit;
-    background: linear-gradient(to bottom, red,black);
-    margin: auto;
     font-size: 0.5rem;
-    text-transform: capitalize;
+    padding: 0;
   }
-  
 }
 
-@media (max-width: 600px){
+@media (max-width: 350px){
   .inside_form > table{
     width: 30%;
     height: auto;
     font-size: 0.3rem;
-    margin:0 auto;
+    margin: 0 auto;
     padding: 0;
   }
   .navbar_logo{
@@ -460,9 +497,8 @@ select.form_boxes[name="slUbic"] {
   .navbar_cabecera{
     width: 100%;
     position: inherit;
-    background: linear-gradient(to bottom, red,black);
     margin: auto;
-    font-size: 0.3rem;
+    font-size: 0.2rem;
     text-transform: capitalize;
   }
 }
@@ -602,6 +638,11 @@ select.form_boxes[name="slUbic"] {
     letter-spacing: 0.05em;
     transition: 0.5s;
     z-index: 10;
+    text-align: center;
+}
+
+.formulario > input:nth-child(4){
+  color: #000000;
 }
 
 .box form .inputBox span /**color de palabras de cuadro*/
@@ -651,9 +692,8 @@ select.form_boxes[name="slUbic"] {
     padding: 9px 5px;
     background: #fffdfd;
     cursor: pointer;
-    font-size: 0.9em;
+    font-size: 0.7em;
     border-radius: 4px;
-    font-weight: 600;
     width: 100px;
     margin: 0 auto;
 }
