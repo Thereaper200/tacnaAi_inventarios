@@ -1,10 +1,14 @@
-<?php include("../template/cabecera.php"); ?>
-
 <?php
 
 //ini_set('display_errors', '1');
 //ini_set('display_startup_errors', '1');
 //error_reporting(E_ALL);
+
+include("../template/cabecera.php"); 
+
+if ($_COOKIE["admin"] != 1 ){
+    header("Location: ../inicio.php");
+}
 
 $txtID = (isset($_POST["txtID"])) ? $_POST["txtID"] : "";
 $Nombre = (isset($_POST["Nombre"])) ? $_POST["Nombre"] : "";
@@ -21,7 +25,7 @@ $pagina_actual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
 $offset = ($pagina_actual - 1) * $resultados_por_pagina;
 
 // Consulta SQL con limit y offset para la paginación
-$sentenciaSQL = $conexion->prepare("SELECT * FROM inventarios_diarios LIMIT :offset, :limit");
+$sentenciaSQL = $conexion->prepare("SELECT * FROM inventarios_diarios ORDER BY `fecha` DESC LIMIT :offset, :limit");
 $sentenciaSQL->bindParam(':offset', $offset, PDO::PARAM_INT);
 $sentenciaSQL->bindParam(':limit', $resultados_por_pagina, PDO::PARAM_INT);
 $sentenciaSQL->execute();
@@ -103,26 +107,27 @@ switch ($accion) {
                 
                 <div class="form_boxes">
                     <label for="txtComent">Comentarios:</label>
-                    <input type="input" class="input_button"  name="txtComent" id="txtComent" placeholder="Comentarios" autocomplete="off">
+                    <textarea type="input" name="txtComent" id="txtComent" placeholder="Comentarios" autocomplete="off"></textarea>
                 </div>
         
-                
+                <div class="form_boxes">
                 <label for="slUbic">Ubicacion:</label>
-                <select class="form_boxes" name="slUbic">
-                    <option selected disabled>-- Seleccione la ubicación --</option>
-                    <option value="Oficina 1"<?php if ($lsUbicSelec == 'Oficina 1') echo ' selected'; ?>>Oficina 1</option>
-                    <option value="Oficina 2"<?php if ($lsUbicSelec == 'Oficina 2') echo ' selected'; ?>>Oficina 2</option>
-                    <option value="Oficina 3"<?php if ($lsUbicSelec == 'Oficina 3') echo ' selected'; ?>>Oficina 3</option>
-                    <option value="Oficina 4"<?php if ($lsUbicSelec == 'Oficina 4') echo ' selected'; ?>>Oficina 4</option>
-                    <option value="Oficina 5"<?php if ($lsUbicSelec == 'Oficina 5') echo ' selected'; ?>>Oficina 5</option>
-                    <option value="AgTech"<?php if ($lsUbicSelec == 'AgTech') echo ' selected'; ?>>AgTech</option>
-                    <option value="Phoenix"<?php if ($lsUbicSelec == 'Phoenix') echo ' selected'; ?>>Phoenix</option>
-                    <option value="QC"<?php if ($lsUbicSelec == 'QC') echo ' selected'; ?>>QC</option>
-                    <option value="Alpha"<?php if ($lsUbicSelec == 'Alpha') echo ' selected'; ?>>Alpha</option>
-                    <option value="Azkaban"<?php if ($lsUbicSelec == 'Azkaban') echo ' selected'; ?>>Azkaban</option>
-                    <option value="Cabina"<?php if ($lsUbicSelec == 'Cabina') echo ' selected'; ?>>Cabina</option>
-                    <option value="Administrativo"<?php if ($lsUbicSelec == 'Administrativo') echo ' selected'; ?>>Administrativo</option>
-                </select>
+                    <select name="slUbic">
+                        <option selected disabled>-- Seleccione la ubicación --</option>
+                        <option value="Oficina 1"<?php if ($lsUbicSelec == 'Oficina 1') echo ' selected'; ?>>Oficina 1</option>
+                        <option value="Oficina 2"<?php if ($lsUbicSelec == 'Oficina 2') echo ' selected'; ?>>Oficina 2</option>
+                        <option value="Oficina 3"<?php if ($lsUbicSelec == 'Oficina 3') echo ' selected'; ?>>Oficina 3</option>
+                        <option value="Oficina 4"<?php if ($lsUbicSelec == 'Oficina 4') echo ' selected'; ?>>Oficina 4</option>
+                        <option value="Oficina 5"<?php if ($lsUbicSelec == 'Oficina 5') echo ' selected'; ?>>Oficina 5</option>
+                        <option value="AgTech"<?php if ($lsUbicSelec == 'AgTech') echo ' selected'; ?>>AgTech</option>
+                        <option value="Phoenix"<?php if ($lsUbicSelec == 'Phoenix') echo ' selected'; ?>>Phoenix</option>
+                        <option value="QC"<?php if ($lsUbicSelec == 'QC') echo ' selected'; ?>>QC</option>
+                        <option value="Alpha"<?php if ($lsUbicSelec == 'Alpha') echo ' selected'; ?>>Alpha</option>
+                        <option value="Azkaban"<?php if ($lsUbicSelec == 'Azkaban') echo ' selected'; ?>>Azkaban</option>
+                        <option value="Cabina"<?php if ($lsUbicSelec == 'Cabina') echo ' selected'; ?>>Cabina</option>
+                        <option value="Administrativo"<?php if ($lsUbicSelec == 'Administrativo') echo ' selected'; ?>>Administrativo</option>
+                    </select>
+                </div>
                 <div class="btn_group" role="group" aria-label="">
                     <button type="submit" class="btn btn_success">Agregar</button>
                     <button type="submit" name="accion" value="Cancelar" class="btn btn_danger">Cancelar</button>
@@ -135,7 +140,6 @@ switch ($accion) {
         </div>
     </div>
 </div>
-
 
 
 <div class="inside_form">
@@ -171,7 +175,7 @@ switch ($accion) {
                         <?php }?>
 
 
-                        <?php if(isset($_COOKIE['usuario']) && $_COOKIE["usuario"] == "Brandon" || $_COOKIE["usuario"] == "Abel" || $_COOKIE["usuario"] == "Shirley" ){ ?>
+                        <?php if(isset($_COOKIE['usuario']) && $_COOKIE["usuario"] == "Brandon" || $_COOKIE["usuario"] == "Abel" || $_COOKIE["usuario"] == "Jovan Solis" ){ ?>
                                  <input type="submit" name="accion" value="Borrar" class="btn btn_danger">
                                  <?php }?>
                         
@@ -207,7 +211,7 @@ switch ($accion) {
         $total_paginas = ceil($total_resultados / $resultados_por_pagina);
 
         for ($i = 1; $i <= $total_paginas; $i++) {
-            echo "<a class='btn border margin-left padding-left' href='invent_test.php?pagina=$i'>$i</a> ";
+            echo "<a class='btn border margin-left padding-left' href='inventario.php?pagina=$i'>$i</a> ";
         }
         ?>
     </div>
@@ -216,5 +220,5 @@ switch ($accion) {
 
 
 
-<?php include("../template/pie.php"); ?>
+<?php // include("../template/pie.php"); ?>
 

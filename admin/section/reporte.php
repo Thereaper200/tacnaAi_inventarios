@@ -75,7 +75,7 @@ switch ($accion) {
 
         $txtSerialSelec = $listainventario["sn"];
         $txtBill = $listainventario["facturas"];
-        $txtCom = $listainventario["comentarios"];
+        $txtComSel = $listainventario["comentarios"];
         //$lsModelSelec = $listainventario["modelo"]; Linea original de codigo no funcional actualmente
         $lsModel = $listainventario["modelo"];
         $lsUbicSelec = $listainventario["ubicacion"];
@@ -158,7 +158,7 @@ foreach ($listaCombinada as $dispositivo) {
 
                 <div class="form_boxes">
                     <label for="txtCom">Comentarios:</label>
-                    <input type="text" class="input_button" value="<?php echo $txtCom; ?>" name="txtCom" id="txtCom" placeholder="Modelo obsoleto." pattern="[a-z, A-Z, 0-9,[], ()]{0,}" autocomplete="off">
+                    <input type="text" class="input_button" value="<?php echo $txtComSel; ?>" name="txtCom" id="txtCom" placeholder="Modelo obsoleto." pattern="[a-z, A-Z, 0-9,[], ()]{0,}" autocomplete="off"></input>
                 </div>
                 <div class="form_boxes">
                     <label for="slModel">Modelo:</label>
@@ -191,13 +191,6 @@ foreach ($listaCombinada as $dispositivo) {
                     <button type="submit" name="accion" value="Cancelar" class="btn btn_danger">Cancelar</button>
                     <button type="submit" name="accion" value="Ubic" class="btn btn_submit">Update Ubic</button>
                 </div>
-
-                <div class="form_boxes">
-                    <label for="txtBus">Búsqueda:</label>
-                    <input type="text" class="busqueda" value="<?php echo $txtBus; ?>" name="txtBus" id="txtBus" placeholder="Búsqueda" autocomplete="off">
-                    <input type="submit" name="accion" value="Buscar" class="btn btn_submit">
-                </div>
-
             </form>
         </div>
     </div>
@@ -205,6 +198,15 @@ foreach ($listaCombinada as $dispositivo) {
 
 <div class="inside_form">
     <table class="table_inside">
+        <form method="POST" enctype="multipart/form-data">
+    <div class="form_containersearch">
+        <div class="form_boxes">
+            <label for="txtBus">Búsqueda:</label>
+            <input type="text" class="busqueda" value="<?php echo $txtBus; ?>" name="txtBus" id="txtBus" placeholder="Búsqueda" autocomplete="off">
+            <input type="submit" name="accion" value="Buscar" class="btn btn_submit">
+        </div>
+    </div>
+    </div>
         <thead>
             <tr>
                 <th>SN</th>
@@ -232,6 +234,7 @@ foreach ($listaCombinada as $dispositivo) {
             </tr>
         <?php endforeach; ?>
         </tbody>
+        </form>
     </table>
 </div>
 
@@ -319,7 +322,7 @@ foreach ($listaCombinada as $dispositivo) {
             $total_paginas = ceil($total_resultados / $resultados_por_pagina);
         
             for ($i = 1; $i <= $total_paginas; $i++) {
-                echo "<a class='btn border margin-left padding-left' href='inventario.php?pagina=$i'>$i</a> ";
+                echo "<a class='btn border margin-left padding-left' href='reporte.php?pagina=$i'>$i</a> ";
             }
             ?>
         </div>

@@ -31,7 +31,7 @@ $sentenciaSQL->execute();
 $listainventarios = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 
 
-
+// include("inventario.php");
 
 ?>
 
