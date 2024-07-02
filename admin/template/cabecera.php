@@ -9,8 +9,6 @@ error_reporting(E_ALL & ~E_NOTICE);
     header("Location: ../index.php");
   }
 
-  // Para hostear en red el sitio eliminar el php echo de las rutas relativas
-
 ?>
 
 <!DOCTYPE html>
@@ -30,11 +28,18 @@ error_reporting(E_ALL & ~E_NOTICE);
 
 <?php $url="http://".$_SERVER["HTTP_HOST"]."/Github/tacnaAi_Inventarios";  ?>
 <body class="body_navbar">
+
+
+
+
+
+
+
+
 <header>
   <div class="cont_navbarinicio">
     <nav class="navbar_cabecera">
-
-    <div id="logo_container">
+      <div id="logo_container">
         <ul class="nav_horizontal">
           <li><a href="<?php echo $url; ?>/admin/inicio.php"><img src="../img/logos/logopl.png" class="navbar_logo"></a></li>
         </ul>
@@ -53,7 +58,7 @@ error_reporting(E_ALL & ~E_NOTICE);
             </ul>
           </li>
           <li class="trans"><a href="<?php echo $url; ?>/admin/section/pedidos.php">Pedidos</a></li>
-          <?php if(isset($_COOKIE['usuario']) && ($_COOKIE["usuario"] == "Brandon" || $_COOKIE["usuario"] == "Abel" || $_COOKIE["usuario"] == "Shirley"  || $_COOKIE["usuario"] == "jovan solis")) {?>
+          <?php if(isset($_COOKIE['admin']) && $_COOKIE['admin'] == 1) {?>
           <li class="trans"><a href="<?php echo $url; ?>/admin/section/usuarios.php">Usuarios</a></li>
           <?php }?>
         </ul>
@@ -62,10 +67,36 @@ error_reporting(E_ALL & ~E_NOTICE);
       <div class="menu_vertical">
         <a><?php echo $_COOKIE["usuario"];?></a>
           <ul>
+            <li><a href="<?php echo $url;?>/admin/profile.php">Mi perfil</a></li>
             <li><a href="<?php echo $url;?>/admin/logout.php">Cerrar sesión</a></li>
           </ul>
       </div>
-      
+
+      <div class="navhamb">
+      <li><a href="<?php echo $url; ?>/admin/inicio.php"><img src="../img/logos/logopl.png" class="navbar_logo"></a></li>
+        <label class="lab_hamb" for="menu_hamb">
+          <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="list_icon" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1h-10a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1h-10a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1h-10a.5.5 0 0 1-.5-.5z"/>
+          </svg>
+        </label>
+
+        <input class="menu_hamb" type="checkbox" id="menu_hamb">
+
+        <ul class="navhamb_vert">
+          <li class="li_navhamb"><a class="link_hamb" href="<?php echo $url;?>/admin/profile.php">Mi perfil</a></li>
+          <li class="li_navhamb"><a class="link_hamb" href="<?php echo $url; ?>/admin/section/reporte.php">Reportes</a></li>
+          <li class="li_navhamb"><a class="link_hamb" href="<?php echo $url; ?>/admin/section/tablas.php">Tablas</a></li>
+          <li class="li_navhamb"><a class="link_hamb" href="<?php echo $url; ?>/admin/section/historial.php">Historial</a></li>
+          <li class="li_navhamb"><a class="link_hamb" href="<?php echo $url; ?>/admin/section/inventario.php">Inventario</a></li>
+          <li class="li_navhamb"><a class="link_hamb" href="<?php echo $url; ?>/admin/section/ollivander_sup.php">Ollivander's</a></li>
+          <li class="li_navhamb"><a class="link_hamb" href="<?php echo $url; ?>/admin/section/pedidos.php">Pedidos</a></li>
+          <?php if(isset($_COOKIE['admin']) && $_COOKIE['admin'] == 1) {?>
+          <li class="li_navhamb"><a class="link_hamb" href="<?php echo $url; ?>/admin/section/usuarios.php">Usuarios</a></li>
+          <?php }?>
+          <li class="li_navhamb"><a class="link_hamb" href="<?php echo $url;?>/admin/logout.php">Cerrar sesión</a></li>
+        </ul>
+      </div>
+
     </nav>
   </div>
 </header>

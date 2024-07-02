@@ -46,7 +46,7 @@ try {
 
 try {
     move_uploaded_file($guardado, $ruta.$nombre);
-    header('Location: invent_test.php');
+    header('Location: inventario.php');
 } catch (Exception $ex) {
     echo $ex->getMessage();
 }

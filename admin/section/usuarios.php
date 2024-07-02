@@ -2,33 +2,51 @@
 include "../template/cabecera.php";
 include "../config/db.php";
 
+if ($_COOKIE["admin"] != 1) {
+    header("Location: ../inicio.php");
+}
 
 
-//ini_set('display_errors', '1');
-//ini_set('display_startup_errors', '1');
-//error_reporting(E_ALL);
+
+// ini_set('display_errors', '1');
+// ini_set('display_startup_errors', '1');
+// error_reporting(E_ALL);
 
 $txtNombre = (isset($_POST["txtNombre"])) ? $_POST["txtNombre"] : NULL;
 $txtNombreSelec = (isset($_POST["txtNombre"])) ? $_POST["txtNombre"] : NULL;
+$slOficina = (isset($_POST["slOficina"])) ? $_POST["slOficina"] : NULL;
+$slPuesto = (isset($_POST["slPuesto"])) ? $_POST["slPuesto"] : NULL;
+$boolAdmin = (isset($_POST["boolAdmin"])) ? 1 : 0;
 $txtContra = (isset($_POST["txtContra"])) ? $_POST["txtContra"] : NULL;
 $accion = (isset($_POST["accion"])) ? $_POST["accion"] : "";
 
 $passhash = password_hash($txtContra, PASSWORD_DEFAULT);
 
 
+// INSERT INTO `usuarios` (`usuario`, `clave`, `oficina`, `puesto`, `admin`) VALUES ('PRUEBA', 'PRUEBA', 'Oficina 3', 'IT', '1');
 
 switch ($accion) {
     case "Agregar":
-        $sentenciaSQL = $conexion->prepare("INSERT INTO `usuarios` (`usuario`, `clave`) VALUES (:usuario, :clave)");
+        $sentenciaSQL = $conexion->prepare("INSERT INTO `usuarios` (`usuario`, `clave`, `oficina`, `puesto`, `admin`) VALUES (:usuario, :clave, :oficina, :puesto, :adminWEB)");
+        $sentenciaSQL->bindParam(":usuario", $txtNombre);
+        $sentenciaSQL->bindParam(":clave", $passhash);
+        $sentenciaSQL->bindParam(":oficina", $slOficina);
+        $sentenciaSQL->bindParam(":puesto", $slPuesto);
+        $sentenciaSQL->bindParam(":adminWEB", $boolAdmin);
+        $sentenciaSQL->execute();
+        break;
+
+    case "Cambiar_Pass":
+        $sentenciaSQL = $conexion->prepare("UPDATE usuarios SET clave = :clave WHERE usuario = :usuario");
         $sentenciaSQL->bindParam(":usuario", $txtNombre);
         $sentenciaSQL->bindParam(":clave", $passhash);
         $sentenciaSQL->execute();
         break;
 
-    case "Modificar":
-        $sentenciaSQL = $conexion->prepare("UPDATE usuarios SET clave = :clave WHERE usuario = :usuario");
+    case "Agregar_Admin":
+        $sentenciaSQL = $conexion->prepare("UPDATE usuarios SET admin = :adminWEB WHERE usuario = :usuario");
         $sentenciaSQL->bindParam(":usuario", $txtNombre);
-        $sentenciaSQL->bindParam(":clave", $passhash);
+        $sentenciaSQL->bindParam(":adminWEB", $boolAdmin);
         $sentenciaSQL->execute();
         break;
 
@@ -64,11 +82,12 @@ $listaUsuarios = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 <div class="principal_columns">
     <div class="head_form">
         <h2 class="form_title">Crear usuario:</h2>
+
         <div class="form_container">
             <form method="POST" enctype="multipart/form-data">
                 
                 <div class="form_boxes">
-                    <label for="txtNombre">Nombre de Usuario:</label>
+                    <label for="txtNombre">Usuario:</label>
                     <input type="text" class="input_button" value="<?php echo $txtNombreSelec; ?>" name="txtNombre" id="txtNombre" placeholder="Usuario" pattern="[a-zA-Z0-9,]*{0,32}" autocomplete="off">
                 </div>
 
@@ -77,13 +96,48 @@ $listaUsuarios = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
                     <input type="text" class="input_button"  name="txtContra" id="txtContra" placeholder="Contraseña" autocomplete="off">
                 </div>
 
-                <br>
-
-                <br>
+                <div class="form_boxes">
+                <label for="slOficina">Oficina:</label>
+                    <select name="slOficina" class="sel_bigger">
+                        <option selected disabled>-- Seleccione la oficina --</option>
+                        <option value="Oficina 1"<?php if ($lsUbicSelec == 'Oficina 1') echo ' selected'; ?>>Oficina 1</option>
+                        <option value="Oficina 2"<?php if ($lsUbicSelec == 'Oficina 2') echo ' selected'; ?>>Oficina 2</option>
+                        <option value="Oficina 3"<?php if ($lsUbicSelec == 'Oficina 3') echo ' selected'; ?>>Oficina 3</option>
+                        <option value="Oficina 4"<?php if ($lsUbicSelec == 'Oficina 4') echo ' selected'; ?>>Oficina 4</option>
+                        <option value="Oficina 5"<?php if ($lsUbicSelec == 'Oficina 5') echo ' selected'; ?>>Oficina 5</option>
+                        <option value="AgTech"<?php if ($lsUbicSelec == 'AgTech') echo ' selected'; ?>>AgTech</option>
+                        <option value="Phoenix"<?php if ($lsUbicSelec == 'Phoenix') echo ' selected'; ?>>Phoenix</option>
+                        <option value="QC"<?php if ($lsUbicSelec == 'QC') echo ' selected'; ?>>QC</option>
+                        <option value="Alpha"<?php if ($lsUbicSelec == 'Alpha') echo ' selected'; ?>>Alpha</option>
+                        <option value="Azkaban"<?php if ($lsUbicSelec == 'Azkaban') echo ' selected'; ?>>Azkaban</option>
+                        <option value="Cabina"<?php if ($lsUbicSelec == 'Cabina') echo ' selected'; ?>>Cabina</option>
+                        <option value="Ollivanders"<?php if ($lsUbicSelec == 'Ollivanders') echo ' selected'; ?>>Ollivander's</option>
+                        <option value="Administrativo"<?php if ($lsUbicSelec == 'Administrativo') echo ' selected'; ?>>Administrativo</option>
+                    </select>
+                </div>
                 
+                <div class="form_boxes">
+                    <label for="slPuesto">Puesto:</label>
+                    <select name="slPuesto" class="sel_bigger">
+                        <option selected disabled>-- Seleccione el puesto --</option>
+                        <option value="Supervisor"<?php if ($slSupSelec == 'Supervisor') echo ' selected'; ?>> Supervisor </option>
+                        <option value="Administrador"<?php if ($slSupSelec == 'Administrador') echo ' selected'; ?>> Administrador </option>
+                        <option value="Client"<?php if ($slSupSelec == 'Client') echo ' selected'; ?>> Client </option>
+                        <option value="Lider"<?php if ($slSupSelec == 'Lider') echo ' selected'; ?>> Lider </option>
+                        <option value="IT"<?php if ($slSupSelec == 'IT') echo ' selected'; ?>> IT </option>
+                    </select>
+                </div>
+                
+
+                <div class="form_boxes">
+                    <label for="boolAdmin">Administrador:</label>
+                    <input type="checkbox" class="input_button"  name="boolAdmin" id="boolAdmin" autocomplete="off">
+                </div>
+
                 <div class="form_boxes" role="group" aria-label="">
                     <button type="submit" name="accion" value="Agregar" class="btn btn_success">Agregar</button>
-                    <button type="submit" name="accion" value="Modificar" class="btn btn_warning">Modificar</button>
+                    <button type="submit" name="accion" value="Cambiar_Pass" class="btn btn_warning">Cambiar clave</button>
+                    <button type="submit" name="accion" value="Agregar_Admin" class="btn btn_submit">Agregar Admin</button>
                     <button type="submit" name="accion" value="Cancelar" class="btn btn_danger">Cancelar</button>
                 </div>
 
@@ -99,6 +153,9 @@ $listaUsuarios = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
         <thead>
             <tr>
                 <th>Usuario</th>
+                <th>Oficina</th>
+                <th>Puesto</th>
+                <th>Administrador</th>
                 <th>Opciones</th>
             </tr>
         </thead>
@@ -108,6 +165,10 @@ $listaUsuarios = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
         <?php foreach($listaUsuarios as $usuarios):  ?>
             <tr>
                 <td><?php echo $usuarios["usuario"];?></td>
+                <td><?php echo $usuarios["oficina"]?></td>
+                <td><?php echo $usuarios["puesto"]?></td>
+                <td><?php echo $usuarios["admin"] == 0 ? "" : "Admin"?></td>
+
                 <td>
                     <form method="POST">
                         <input type="hidden" name="txtNombre" id="txtNombre" value="<?php echo $usuarios["usuario"];?>" />

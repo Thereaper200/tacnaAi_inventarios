@@ -10,9 +10,12 @@
 $txtID = (isset($_POST["txtID"])) ? $_POST["txtID"] : "";
 $txtSupervisor = (isset($_COOKIE["usuario"])) ? $_COOKIE["usuario"] : "";
 $txtPedido = (isset($_POST["txtPedido"])) ? $_POST["txtPedido"] : "";
+$txtEquipo = (isset($_POST["txtEquipo"])) ? $_POST["txtEquipo"] : "";
 $txtComentarios = (isset($_POST["txtComentarios"])) ? $_POST["txtComentarios"] : "";
 $txtProceso = (isset($_POST["txtProceso"])) ? $_POST["txtProceso"] : "En espera";
 $txtProcesoSelec = (isset($_POST["txtProceso"])) ? $_POST["txtProceso"] : "En espera";
+$txtMaterialSelec = (isset($_POST["txtMaterialSelec"])) ? $_POST["txtMaterialSelec"] : NULL;
+$idSelec = false;
 $accion = (isset($_POST["accion"])) ? $_POST["accion"] : "";
 
 
@@ -26,9 +29,10 @@ include("../config/db.php");
 
 switch ($accion) {
     case "Agregar":
-        $sentenciaSQL = $conexion->prepare("INSERT INTO `pedidos_prueba` (`oficina`, `pedido`, `comentario`, `proceso`) VALUES (:oficina, :pedido, :comentario, :proceso)");
+        $sentenciaSQL = $conexion->prepare("INSERT INTO `pedidos_prueba` (`oficina`, `pedido`, `equipo`, `comentario`, `proceso`) VALUES (:oficina, :pedido, :equipo, :comentario, :proceso)");
         $sentenciaSQL->bindParam(":oficina", $txtSupervisor);
         $sentenciaSQL->bindParam(":pedido", $txtPedido);
+        $sentenciaSQL->bindParam(":equipo", $txtEquipo);
         $sentenciaSQL->bindParam(":comentario", $txtComentarios);
         $sentenciaSQL->bindParam(":proceso", $txtProceso);
         $sentenciaSQL->execute();
@@ -36,38 +40,47 @@ switch ($accion) {
 
     case "Modificar":
         //UPDATE `pedidos_prueba` SET `oficina` = 'Brandon', `pedido` = '100 Pencil', `comentario` = 'Reponer material', `proceso` = 'Rechazado' WHERE `pedidos_prueba`.`id` = 21;
-        $sentenciaSQL = $conexion->prepare("UPDATE `pedidos_prueba` SET `oficina` = :oficina, `pedido` = :pedido, `comentario` = :comentario, `proceso` = :proceso WHERE `pedidos_prueba`.`id` = :id;");
+        $sentenciaSQL = $conexion->prepare("UPDATE `pedidos_prueba` SET `oficina` = :oficina, `pedido` = :pedido, `equipo` = :equipo, `comentario` = :comentario, `proceso` = :proceso WHERE `pedidos_prueba`.`id` = :id;");    
         $sentenciaSQL->bindParam(":id", $txtID);
         $sentenciaSQL->bindParam(":oficina", $txtSupervisor); 
         $sentenciaSQL->bindParam(":pedido", $txtPedido);
+        $sentenciaSQL->bindParam(":equipo", $txtEquipo);
         $sentenciaSQL->bindParam(":comentario", $txtComentarios);
         $sentenciaSQL->bindParam(":proceso", $txtProcesoSelec);
         $sentenciaSQL->execute();
         break;
 
-    case "Cancelar":
+    case "Limpiar":
         $txtID = "";
         $txtSupervisor = "";
         $txtPedido = "";
+        $txtEquipo = "";
         $txtComentarios = "";
         $txtFechaPedido = "";
         break;
 
 
-    case "Seleccionar":
-        $sentenciaSQL = $conexion->prepare("SELECT * FROM pedidos_prueba WHERE id = :id");
-        $sentenciaSQL->bindParam(":id", $txtID);
-        $sentenciaSQL->execute();
-        $listainventario = $sentenciaSQL->fetch(PDO::FETCH_LAZY);
-
-        $txtSerialSelec = $listainventario["id"];
-        $txtSupervisor = $listainventario["oficina"];
-        $txtPedido = $listainventario["pedido"];
-        $txtComentarios = $listainventario["comentario"];
-        $txtProcesoSelec = $listainventario["proceso"];
+        case "Seleccionar":
+            $idSelec = true;
         
-        break;
-
+            $sentenciaSQL = $conexion->prepare("SELECT * FROM pedidos_prueba WHERE id = :id");
+            $sentenciaSQL->bindParam(":id", $txtID);
+            $sentenciaSQL->execute();
+            $listainventario = $sentenciaSQL->fetch(PDO::FETCH_LAZY);
+        
+            if ($listainventario) {
+                $txtID = $listainventario["id"];
+                $txtSupervisor = $listainventario["oficina"];
+                $txtPedido = $listainventario["pedido"];
+                $txtEquipo = $listainventario["equipo"]; // Corregido a txtEquipo
+                $txtComentarios = $listainventario["comentario"]; // Corregido a txtComentarios
+                $txtProcesoSelec = $listainventario["proceso"];
+            } else {
+                echo "No se encontraron registros para el ID especificado.";
+            }
+        
+            break;
+        
     case "Borrar":
         $sentenciaSQL = $conexion->prepare("DELETE FROM pedidos_prueba WHERE id = :id");
         $sentenciaSQL->bindParam(":id", $txtID);
@@ -75,7 +88,7 @@ switch ($accion) {
         break;
 }
 
-$sentenciaSQL = $conexion->prepare("SELECT * FROM pedidos_prueba");
+$sentenciaSQL = $conexion->prepare("SELECT * FROM pedidos_prueba ORDER BY `fecha_time` DESC");
 $sentenciaSQL->execute();
 $listainventario = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -89,42 +102,61 @@ $listainventario = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
             <form method="POST" enctype="multipart/form-data">
                 
                 <div class="form_boxes">
-                    <input type="hidden" class="input_button" value="<?php echo $txtID; ?>" name="txtID" id="txtID" placeholder="ID"  autocomplete="off">
+                    <?php if ($idSelec == true) {?>
+                    <label for="txtID">ID:</label>
+                    <?php }?>
+
+                    <input type="<?php echo $idSelec == true ? "text" : "hidden"; ?>" class="input_button" value="<?php echo $txtID; ?>" name="txtID" id="txtID" placeholder="ID" readonly  autocomplete="off">
                 </div>
                 
-
                 <div class="form_boxes">
-                    <label for="txtSupervisor">Supervisor:</label>
-                    <input type="text" class="input_button" value="<?php echo $txtSupervisor; ?>" name="txtSupervisor" id="txtSupervisor" placeholder="Supervisor" pattern="[a-z, A-Z]{4,8}" autocomplete="off">
+                    <input type="hidden" class="input_button" value="<?php echo $txtSupervisor; ?>" name="txtSupervisor" id="txtSupervisor" pattern="[a-z, A-Z]{4,20}\" autocomplete="off">
                 </div>
 
                 <div class="form_boxes">
-                    <label for="txtPedido">Pedido:</label>
-                    <input type="text" class="input_button" value="<?php echo $txtPedido; ?>" name="txtPedido" id="txtPedido" placeholder="Pedido" pattern="[a-z, A-Z, 0-9]{0,255}" autocomplete="off">
+                    <label for="txtPedido">Cantidad:</label>
+                    <input type="text" class="input_button" value="<?php echo $txtPedido; ?>" name="txtPedido" id="txtPedido" placeholder="Ingresa la cantidad..." pattern="[a-z, A-Z, 0-9]{0,255}" autocomplete="off">
                 </div>
 
-                
+                <div class="form_boxes">
+                    <label for="txtEquipo">Equipo:</label>
+                    <select name="txtEquipo">
+                        <option selected disabled>-- Seleccione el equipo --</option>
+                        <option value="Puntas"<?php if ($txtEquipo == 'Puntas') echo ' selected'; ?>>Puntas</option>
+                        <option value="Cables tipo C"<?php if ($txtEquipo == 'Cables tipo C') echo ' selected'; ?>>Cables tipo C</option>
+                        <option value="Cables Lightning"<?php if ($txtEquipo == 'Cables Lightning') echo ' selected'; ?>>Cables Lightning</option>
+                        <option value="iPencil 1era gen"<?php if ($txtEquipo == 'iPencil 1era gen') echo ' selected'; ?>>iPencil 1era gen</option>
+                        <option value="iPencil 2da gen"<?php if ($txtEquipo == 'iPencil 2da gen') echo ' selected'; ?>>iPencil 2da gen</option>
+                        <option value="Adaptador"<?php if ($txtEquipo == 'Adaptador') echo ' selected'; ?>>Adaptador</option>
+                        <option value="iPad"<?php if ($txtEquipo == 'iPad') echo ' selected'; ?>>iPad</option>
+                    </select>
+                </div>
+
                 <div class="form_boxes">
                     <label for="txtComentarios">Motivo:</label>
-                    <input type="text" class="input_button" value="<?php echo $txtComentarios; ?>" name="txtComentarios" id="txtComentarios" placeholder="Motivo" pattern="[a-z, A-Z, 0-9]{0,255}" autocomplete="off">
+                    <textarea name="txtComentarios" id="txtComentarios" placeholder="Deja el motivo del pedido..." pattern="[a-z, A-Z, 0-9]{0,255}" autocomplete="off"><?php echo $txtComentarios; ?></textarea>
                 </div>
-                
-                
-                <?php if($_COOKIE["usuario"] == "Brandon" || $_COOKIE["usuario"] == "Abel" || $_COOKIE["usuario"] == "Shirley"){?>
-                <label for="txtProceso">Estado:</label>
-                <select class="form_boxes" name="txtProceso" value="<?php echo $txtProcesoSelec;?>">
-                    <option selected disabled>-- Seleccione la ubicación --</option>
-                    <option value="Notificado"<?php if ($txtProcesoSelec == 'Notificado') echo ' selected'; ?>>Notificado</option>
-                    <option value="Rechazado"<?php if ($txtProcesoSelec == 'Rechazado') echo ' selected'; ?>>Rechazado</option>
-                    <option value="En camino"<?php if ($txtProcesoSelec == 'En camino') echo ' selected'; ?>>En camino</option>
-                    <option value="Entregado"<?php if ($txtProcesoSelec == 'Entregado') echo ' selected'; ?>>Entregado</option>
-                </select>
-                <?php }?>
 
+                <?php if($_COOKIE["admin"] == 1){ ?>
+                <div class="form_boxes">
+                    <label for="txtProceso">Estado:</label>
+                    <select name="txtProceso">
+                        <option selected disabled>-- Seleccione el estado --</option>
+                        <option value="Notificado"<?php if ($txtProcesoSelec == 'Notificado') echo ' selected'; ?>>Notificado</option>
+                        <option value="Rechazado"<?php if ($txtProcesoSelec == 'Rechazado') echo ' selected'; ?>>Rechazado</option>
+                        <option value="En camino"<?php if ($txtProcesoSelec == 'En camino') echo ' selected'; ?>>En camino</option>
+                        <option value="Entregado"<?php if ($txtProcesoSelec == 'Entregado') echo ' selected'; ?>>Entregado</option>
+                    </select>
+                </div>
+                <?php } ?>
+
+                </div>
                 <div class="btn_group" role="group" aria-label="">
+                    <?php if ($idSelec == false) {?>
                     <button type="submit" name="accion" value="Agregar" class="btn btn_success">Agregar</button>
+                    <?php }?>
                     <button type="submit" name="accion" value="Modificar" class="btn btn_warning">Modificar</button>
-                    <button type="submit" name="accion" value="Cancelar" class="btn btn_danger">Cancelar</button>
+                    <button type="submit" name="accion" value="Limpiar" class="btn btn_submit">Limpiar</button>
                 </div>
             </form>
         </div>
@@ -139,7 +171,8 @@ $listainventario = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
             <tr>
                 <th>ID</th>
                 <th>Supervisor</th>
-                <th>Pedido</th>
+                <th>Cantidad</th>
+                <th>Equipo</th>
                 <th>Fecha del pedido</th>
                 <th>Motivo</th>
                 <th>Seguimiento</th>
@@ -152,6 +185,7 @@ $listainventario = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
                 <td><?php echo $dispositivo["id"];?></td>
                 <td><?php echo $dispositivo["oficina"];?></td>
                 <td><?php echo $dispositivo["pedido"];?></td>
+                <td><?php echo $dispositivo["equipo"];?></td>
                 <td><?php echo $dispositivo["fecha_time"];?></td>
                 <td><?php echo $dispositivo["comentario"];?></td>
                 <td><?php echo $dispositivo["proceso"];?></td>

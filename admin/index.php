@@ -12,10 +12,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bindParam(":usuario", $usuario);
     $stmt->execute();
 
+    //$datos_usuario = $sql->fetchAll(PDO::FETCH_ASSOC);
+
     if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         if (password_verify($clave, $row["clave"])) {
             ob_end_clean(); // Limpiar el buffer de salida
-            setcookie('usuario', $usuario, time()+3600);
+            setcookie('usuario', $row['usuario'], time()+3600);
+            setcookie('puesto', $row["puesto"], time()+3600);
+            setcookie('oficina', $row["oficina"], time()+3600);
+            setcookie('admin', $row['admin'], time()+3600);
             header("Location: inicio.php");
             exit; // Detener la ejecución del script después de la redirección
         } else {
