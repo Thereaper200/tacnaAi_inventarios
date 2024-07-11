@@ -55,7 +55,7 @@ ob_end_flush(); // Enviar el buffer de salida
 
   </head>
 
-<body>
+<body class="body_index">
     <?php $url="http://".$_SERVER["HTTP_HOST"]."/tacnatest";  ?>
         <nav class="container-navbarprelog">
             <div class="nabvar_nav">

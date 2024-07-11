@@ -1,8 +1,7 @@
 <?php 
-ini_set('display_errors',0);
-
-error_reporting(E_ALL & ~E_NOTICE);
-
+// ini_set('display_errors', '1');
+// ini_set('display_startup_errors', '1');
+// error_reporting(E_ALL);
 
   if(isset($_COOKIE['usuario'])) {
   } else {
@@ -24,17 +23,11 @@ error_reporting(E_ALL & ~E_NOTICE);
     <!--<link rel="icon" href="../img/logos/iconpl.png" type="image/x-icon">-->
     <link rel="icon" href="../img/logos/iconpl.png" type="image/x-icon">
     <link rel="icon" href="../../img/logos/iconpl.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <?php $url="http://".$_SERVER["HTTP_HOST"]."/Github/tacnaAi_Inventarios";  ?>
 <body class="body_navbar">
-
-
-
-
-
-
-
 
 <header>
   <div class="cont_navbarinicio">
