@@ -32,12 +32,8 @@ div.form_boxes:nth-child(8) > select:nth-child(2) {
   width: 65%;
 }
 
-.dog {
-  display: block;
-  margin: 0 auto;
-  width: 100vw;
-  height: 95vh;
-}
+/* Estilo básico para la lista de tareas */
+
 
 .navbar_logo {
   height: 55px;
@@ -236,6 +232,7 @@ li::marker {
 
 .dropdown {
   font-size: 0.5rem;
+  z-index: 1;
 }
 
 /* Pie de pagina */
@@ -279,6 +276,7 @@ li::marker {
 
   .menu_hamb:checked + .navhamb_vert {
     height: 100%;
+    z-index: 1;
   }
   
   .navhamb{
@@ -344,21 +342,29 @@ div.principal_columns:nth-child(4){
   width: 65%;
 }
 
+/* Contenedor del formulario */
 .formulario_container {
+  margin: 100px auto; /* Centra el contenedor horizontalmente */
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 90vh;
-  background: url('../img/tacna3.jpg') center/ cover fixed no-repeat;
+  height: 50vh; 
+  /* background: url('../img/tacna3.jpg') center/ cover fixed no-repeat;  */
 }
 
-.icon_form{
+/* Icono del formulario */
+.icon_form {
   height: 60px;
   width: 60px;
   display: block;
   margin: auto;
 }
 
+.body_index{
+  background: url('../img/tacna3.jpg') center/ cover fixed no-repeat;
+}
+
+/* Formulario */
 .formulario {
   background: #ff000d8e;
   color: #fff;
@@ -366,7 +372,7 @@ div.principal_columns:nth-child(4){
   border-radius: 8px;
   max-width: 400px;
   text-align: center;
-  }
+}
   
 .formulario label {
   display: block;
@@ -834,7 +840,7 @@ div.inside_form:nth-child(3){
 
 /* PROFILE */
 
-#profile_container{
+#profile_container {
   display: flex;
   flex-direction: column;
   margin: 50px;
@@ -842,27 +848,63 @@ div.inside_form:nth-child(3){
   align-items: center;
 }
 
-#profile_img{
+#profile_img {
+  position: relative;
   display: flex;
   width: 250px;
   height: 250px;
   margin: 10px;
   border: 5px solid black;
-  border-radius:50%;
+  border-radius: 50%;
   justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  cursor: pointer;
 }
 
-#profile_img > img:nth-child(1){
+#profile_img > img {
   width: 100%;
   height: auto;
   background-size: cover;
   border-radius: 50%;
 }
 
+.icono {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  color: rgba(255, 255, 255, 0.8);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#profile_img:hover .icono {
+  opacity: 1;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#profile_img:hover .overlay {
+  opacity: 1;
+}
+
 .profile {
-  display: flex; 
+  display: flex;
   flex-direction: column;
-  gap: 10px; 
+  gap: 10px;
+  width: 25%;
+  text-align: center;
 }
 
 .label-input {
@@ -882,5 +924,15 @@ div.inside_form:nth-child(3){
 .profile p {
   font-size: 24px;
   font-weight: bold;
+  text-align: center;
+}
+
+#userOf,
+#userP {
+  width: 100%;
+  text-align: center;
+}
+
+.profile > form > label{
   text-align: center;
 }
