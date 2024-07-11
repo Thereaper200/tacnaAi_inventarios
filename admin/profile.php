@@ -71,8 +71,8 @@ switch ($accion) {
 <div id="profile_container">
     <section id="profile_img">
         <img src="../admin/img/img_profiles/<?= htmlspecialchars($ruta_foto) ?>" alt="Foto del Trabajador">
-        <div class="overlay"></div>
-        <i class="icono fa fa-camera"></i>
+        <!-- <div class="overlay"></div>
+        <i class="icono fa fa-camera"></i> -->
     </section>
 
     <header class="profile">

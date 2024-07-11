@@ -859,7 +859,7 @@ div.inside_form:nth-child(3){
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 #profile_img > img {
@@ -869,7 +869,7 @@ div.inside_form:nth-child(3){
   border-radius: 50%;
 }
 
-.icono {
+/* .icono {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -897,7 +897,7 @@ div.inside_form:nth-child(3){
 
 #profile_img:hover .overlay {
   opacity: 1;
-}
+} */
 
 .profile {
   display: flex;
